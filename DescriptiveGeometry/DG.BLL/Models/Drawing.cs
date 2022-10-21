@@ -8,7 +8,3 @@ public class Drawing
     public string DescriptionPhotoLink { get; set; }
     public string DrawingPhotoLink { get; set; }
 }
-//public record Drawing(
-//    int Id, 
-//    string Description,
-//    Dictionary<string, Coords> Coords);
