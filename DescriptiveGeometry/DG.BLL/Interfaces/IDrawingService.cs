@@ -5,20 +5,20 @@ namespace DG.BLL.Interfaces;
 public interface IDrawingService
 {
     Task<Drawing> Get(int id,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 
     Task<List<Drawing>> GetByDescription(string description,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 
     Task<List<Drawing>> GetAll(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 
     Task<Drawing> Create(Drawing drawing,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 
     Task<Drawing> Update(Drawing drawing,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 
     Task Delete(int id,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken);
 }

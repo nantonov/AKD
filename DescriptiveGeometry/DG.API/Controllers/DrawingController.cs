@@ -20,7 +20,7 @@ public class DrawingController : Controller
 
     [HttpGet("{id}")]
     public async Task<Drawing> Get(
-        [FromQuery] int id,
+        int id,
         CancellationToken cancellationToken)
     {
         var result = await _drawingService
@@ -28,10 +28,10 @@ public class DrawingController : Controller
 
         return result;
     }
-    
-    [HttpGet("description")]
+
+    [HttpGet("description/{description}")]
     public async Task<List<Drawing>> GetByDescription(
-        [FromQuery] string description,
+        string description,
         CancellationToken cancellationToken)
     {
         var result = await _drawingService
@@ -39,7 +39,7 @@ public class DrawingController : Controller
 
         return result;
     }
-    
+
     [HttpGet]
     public async Task<List<Drawing>> GetAll(
         CancellationToken cancellationToken)
@@ -63,9 +63,9 @@ public class DrawingController : Controller
         return result;
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     public async Task<Drawing> Update(
-        [FromQuery] int id,
+        int id,
         [FromBody] ShortDrawingViewModel drawingViewModel,
       CancellationToken cancellationToken)
     {
@@ -73,14 +73,14 @@ public class DrawingController : Controller
         drawing.Id = id;
 
         var result = await _drawingService
-            .Update(drawing,cancellationToken);
+            .Update(drawing, cancellationToken);
 
         return result;
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public Task Delete(
-        [FromQuery] int id,
+        int id,
         CancellationToken cancellationToken)
     {
         return _drawingService.Delete(id, cancellationToken);
