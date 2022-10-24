@@ -1,55 +1,37 @@
-﻿using DG.BLL.Models;
-using DG.BLL.Services.Contract;
+﻿using DG.BLL.Interfaces;
+using DG.BLL.Models;
 
 namespace DG.BLL.Services;
 
 public class DrawingService : IDrawingService
 {
-    //private readonly DrawingsDbContext _dbContext;
-
-    //public DrawingService(
-    //    DrawingsDbContext dbContext)
-    //{
-    //    _dbContext = dbContext;
-    //}
-
-    public Task<Drawing> Get(int id)
+    public Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<Drawing>> GetByQuery(string query)
+    public Task Delete(int id, CancellationToken cancellationToken)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<Drawing>> GetDrawings()
+    public Task<Drawing> Get(int id, CancellationToken cancellationToken)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<string> GetName(int id)
+    public Task<List<Drawing>> GetAll(CancellationToken cancellationToken)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<int>> GetId(string query)
+    public Task<List<Drawing>> GetByDescription(string query, CancellationToken cancellationToken)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<int> Create(Drawing drawing)
+    public Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
-        return null;
-    }
-
-    public Task<int> Update(Drawing drawing)
-    {
-        return null;
-    }
-
-    public Task<int> Delete(int id)
-    {
-        return null;
+        throw new NotImplementedException();
     }
 }
