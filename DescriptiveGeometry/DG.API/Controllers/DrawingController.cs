@@ -18,7 +18,7 @@ public class DrawingController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Drawing>> Get(
+    public async Task<Drawing> Get(
         [FromRoute] int id,
         CancellationToken cancellationToken = default)
     {
