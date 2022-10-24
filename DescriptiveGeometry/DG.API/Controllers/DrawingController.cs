@@ -23,7 +23,7 @@ public class DrawingController : Controller
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Get(id);
+            .Get(id, cancellationToken);
 
         return result;
     }
@@ -34,7 +34,7 @@ public class DrawingController : Controller
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetByQuery(query);
+            .GetByQuery(query, cancellationToken);
 
         return result;
     }
@@ -44,7 +44,7 @@ public class DrawingController : Controller
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetDrawings();
+            .GetDrawings(cancellationToken);
 
         return result;
     }
@@ -55,7 +55,7 @@ public class DrawingController : Controller
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetIds(query);
+            .GetIds(query, cancellationToken);
 
         return result;
     }
@@ -66,7 +66,7 @@ public class DrawingController : Controller
       CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Create(drawing);
+            .Create(drawing, cancellationToken);
 
         return result;
     }
@@ -77,7 +77,7 @@ public class DrawingController : Controller
       CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Update(drawing);
+            .Update(drawing, cancellationToken);
 
         return result;
     }
@@ -87,6 +87,6 @@ public class DrawingController : Controller
         [FromRoute] int id,
         CancellationToken cancellationToken = default)
     {
-        await _drawingService.Delete(id);
+        await _drawingService.Delete(id, cancellationToken);
     }
 }
