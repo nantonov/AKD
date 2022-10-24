@@ -21,7 +21,7 @@ public class DrawingController : Controller
     [HttpGet("{id}")]
     public async Task<Drawing> Get(
         [FromQuery] int id,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var result = await _drawingService
             .Get(id, cancellationToken);
@@ -30,9 +30,9 @@ public class DrawingController : Controller
     }
     
     [HttpGet("description")]
-    public async Task<List<Drawing>> FindByDescription(
+    public async Task<List<Drawing>> GetByDescription(
         [FromQuery] string description,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var result = await _drawingService
             .GetByDescription(description, cancellationToken);
@@ -42,7 +42,7 @@ public class DrawingController : Controller
     
     [HttpGet]
     public async Task<List<Drawing>> GetAll(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var result = await _drawingService
             .GetAll(cancellationToken);
@@ -53,7 +53,7 @@ public class DrawingController : Controller
     [HttpPost]
     public async Task<Drawing> Create(
         [FromBody] ShortDrawingViewModel drawingViewModel,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var result = await _drawingService
             .Create(
@@ -67,7 +67,7 @@ public class DrawingController : Controller
     public async Task<Drawing> Update(
         [FromQuery] int id,
         [FromBody] ShortDrawingViewModel drawingViewModel,
-      CancellationToken cancellationToken = default)
+      CancellationToken cancellationToken)
     {
         var drawing = MapToDrawing(drawingViewModel);
         drawing.Id = id;
@@ -81,7 +81,7 @@ public class DrawingController : Controller
     [HttpDelete]
     public Task Delete(
         [FromQuery] int id,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         return _drawingService.Delete(id, cancellationToken);
     }
