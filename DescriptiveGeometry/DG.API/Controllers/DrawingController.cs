@@ -1,5 +1,5 @@
+using DG.BLL.Interfaces;
 using DG.BLL.Models;
-using DG.BLL.Services.Contract;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,13 +28,13 @@ public class DrawingController : Controller
         return result;
     }
 
-    [HttpGet("query/{query}")]
+    [HttpGet("description/{description}")]
     public async Task<List<Drawing>> FindByDescription(
-        [FromRoute] string query,
+        [FromRoute] string description,
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetByQuery(query, cancellationToken);
+            .GetByQuery(description, cancellationToken);
 
         return result;
     }
@@ -49,13 +49,13 @@ public class DrawingController : Controller
         return result;
     }
 
-    [HttpGet("ids/query/{query}")]
+    [HttpGet("ids/description/{description}")]
     public async Task<List<int>> GetId(
-        [FromRoute] string query,
+        [FromRoute] string description,
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetIds(query, cancellationToken);
+            .GetIds(description, cancellationToken);
 
         return result;
     }

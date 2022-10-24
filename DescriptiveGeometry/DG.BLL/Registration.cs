@@ -1,5 +1,5 @@
-﻿using DG.BLL.Services;
-using DG.BLL.Services.Contract;
+﻿using DG.BLL.Interfaces;
+using DG.BLL.Services;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

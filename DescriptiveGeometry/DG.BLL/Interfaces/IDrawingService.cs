@@ -1,13 +1,13 @@
 ﻿using DG.BLL.Models;
 
-namespace DG.BLL.Services.Contract;
+namespace DG.BLL.Interfaces;
 
 public interface IDrawingService
 {
     Task<Drawing> Get(int id,
         CancellationToken cancellationToken = default);
 
-    Task<List<Drawing>> GetByQuery(string query, 
+    Task<List<Drawing>> GetByQuery(string query,
         CancellationToken cancellationToken = default);
 
     Task<List<Drawing>> GetDrawings(
@@ -16,10 +16,10 @@ public interface IDrawingService
     Task<List<int>> GetIds(string query,
         CancellationToken cancellationToken = default);
 
-    Task<int> Create(Drawing drawing, 
+    Task<int> Create(Drawing drawing,
         CancellationToken cancellationToken = default);
 
-    Task<int> Update(Drawing drawing, 
+    Task<int> Update(Drawing drawing,
         CancellationToken cancellationToken = default);
 
     Task<int> Delete(int id,

@@ -1,5 +1,5 @@
-﻿using DG.BLL.Models;
-using DG.BLL.Services.Contract;
+﻿using DG.BLL.Interfaces;
+using DG.BLL.Models;
 
 namespace DG.BLL.Services;
 
