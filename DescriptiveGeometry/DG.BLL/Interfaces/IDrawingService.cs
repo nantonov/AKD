@@ -16,12 +16,12 @@ public interface IDrawingService
     Task<List<int>> GetIds(string query,
         CancellationToken cancellationToken = default);
 
-    Task<int> Create(Drawing drawing,
+    Task<bool> Create(Drawing drawing,
         CancellationToken cancellationToken = default);
 
-    Task<int> Update(Drawing drawing,
+    Task<bool> Update(Drawing drawing,
         CancellationToken cancellationToken = default);
 
-    Task<int> Delete(int id,
+    Task<bool> Delete(int id,
         CancellationToken cancellationToken = default);
 }

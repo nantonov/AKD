@@ -1,3 +1,4 @@
+using DG.API.Models;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
 
@@ -17,7 +18,7 @@ public class DrawingController : Controller
         _drawingService = drawingService;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("id{id}")]
     public async Task<Drawing> Get(
         [FromRoute] int id,
         CancellationToken cancellationToken = default)
@@ -27,10 +28,10 @@ public class DrawingController : Controller
 
         return result;
     }
-
-    [HttpGet("description/{description}")]
+    
+    [HttpGet("search")]
     public async Task<List<Drawing>> FindByDescription(
-        [FromRoute] string description,
+        [FromQuery] string description,
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
@@ -38,8 +39,8 @@ public class DrawingController : Controller
 
         return result;
     }
-
-    [HttpGet]
+    
+    [HttpGet("all")]
     public async Task<List<Drawing>> GetDrawings(
         CancellationToken cancellationToken = default)
     {
@@ -49,9 +50,9 @@ public class DrawingController : Controller
         return result;
     }
 
-    [HttpGet("ids/description/{description}")]
-    public async Task<List<int>> GetId(
-        [FromRoute] string description,
+    [HttpGet("ids")]
+    public async Task<List<int>> GetIds(
+        [FromQuery] string description,
         CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
@@ -61,32 +62,51 @@ public class DrawingController : Controller
     }
 
     [HttpPost]
-    public async Task<int> Create(
-      [FromBody] Drawing drawing,
-      CancellationToken cancellationToken = default)
+    public async Task<ActionResult> Create(
+        [FromBody] DrawingBodyModel drawingBodyModel,
+        CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Create(drawing, cancellationToken);
+            .Create(
+                MapToDrawing(drawingBodyModel),
+                cancellationToken);
 
-        return result;
+        return result ? BadRequest() : Ok();
     }
 
     [HttpPut]
-    public async Task<int> Update(
-      [FromBody] Drawing drawing,
+    public async Task<ActionResult> Update(
+        [FromQuery] int id,
+        [FromBody] DrawingBodyModel drawingBodyModel,
       CancellationToken cancellationToken = default)
     {
-        var result = await _drawingService
-            .Update(drawing, cancellationToken);
+        var drawing = MapToDrawing(drawingBodyModel);
+        drawing.Id = id;
 
-        return result;
+        var result = await _drawingService
+            .Update(drawing,cancellationToken);
+
+        return result ? BadRequest() : Ok();
     }
 
     [HttpDelete]
-    public async Task Delete(
+    public async Task<ActionResult> Delete(
         [FromRoute] int id,
         CancellationToken cancellationToken = default)
     {
-        await _drawingService.Delete(id, cancellationToken);
+        var result = await _drawingService.Delete(id, cancellationToken);
+
+        return result ? BadRequest() : Ok();
+    }
+
+    private static Drawing MapToDrawing(DrawingBodyModel drawing)
+    {
+        return new Drawing()
+        {
+            Description = drawing.Description,
+            Points = drawing.Points,
+            DescriptionPhotoLink = drawing.DescriptionPhotoLink,
+            DrawingPhotoLink = drawing.DrawingPhotoLink
+        };
     }
 }

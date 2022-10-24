@@ -37,19 +37,19 @@ public class DrawingService : IDrawingService
         return null;
     }
 
-    public Task<int> Create(Drawing drawing,
+    public Task<bool> Create(Drawing drawing,
         CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<int> Update(Drawing drawing, 
+    public Task<bool> Update(Drawing drawing, 
         CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<int> Delete(int id,
+    public Task<bool> Delete(int id,
         CancellationToken cancellationToken = default)
     {
         return null;
