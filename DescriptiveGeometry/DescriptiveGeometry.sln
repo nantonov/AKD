@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DG.BLL", "DG.BLL\DG.BLL.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DG.DAL", "DG.DAL\DG.DAL.csproj", "{A33DE3FB-6B4F-456A-846E-83F91C26A7A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{434FE612-A2B2-48AE-BF9E-ED4F452E10A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A5FB27E9-C39A-402E-83B9-60D3DFC6EC22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Core.DbMigration", "Shared\Core\Shared.Core.DbMigration\Shared.Core.DbMigration.csproj", "{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +33,17 @@ Global
 		{A33DE3FB-6B4F-456A-846E-83F91C26A7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33DE3FB-6B4F-456A-846E-83F91C26A7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A33DE3FB-6B4F-456A-846E-83F91C26A7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A5FB27E9-C39A-402E-83B9-60D3DFC6EC22} = {434FE612-A2B2-48AE-BF9E-ED4F452E10A9}
+		{EECB5174-9DB2-4B04-B2A6-3C2B4E7CFC26} = {A5FB27E9-C39A-402E-83B9-60D3DFC6EC22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85FE5C50-598B-426F-BDCD-68BFB6CC7F9C}
