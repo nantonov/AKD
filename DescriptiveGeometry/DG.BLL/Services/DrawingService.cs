@@ -5,53 +5,33 @@ namespace DG.BLL.Services;
 
 public class DrawingService : IDrawingService
 {
-    //private readonly DrawingsDbContext _dbContext;
-
-    //public DrawingService(
-    //    DrawingsDbContext dbContext)
-    //{
-    //    _dbContext = dbContext;
-    //}
-
-    public Task<Drawing> Get(int id,
-        CancellationToken cancellationToken = default)
+    public Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken = default)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<Drawing>> GetByQuery(string query,
-        CancellationToken cancellationToken = default)
+    public Task Delete(int id, CancellationToken cancellationToken = default)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<Drawing>> GetDrawings(
-        CancellationToken cancellationToken = default)
+    public Task<Drawing> Get(int id, CancellationToken cancellationToken = default)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<List<int>> GetIds(string query,
-        CancellationToken cancellationToken = default)
+    public Task<List<Drawing>> GetAll(CancellationToken cancellationToken = default)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<bool> Create(Drawing drawing,
-        CancellationToken cancellationToken = default)
+    public Task<List<Drawing>> GetByDescription(string query, CancellationToken cancellationToken = default)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
-    public Task<bool> Update(Drawing drawing, 
-        CancellationToken cancellationToken = default)
+    public Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken = default)
     {
-        return null;
-    }
-
-    public Task<bool> Delete(int id,
-        CancellationToken cancellationToken = default)
-    {
-        return null;
+        throw new NotImplementedException();
     }
 }

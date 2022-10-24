@@ -1,8 +1,8 @@
 ﻿using DG.BLL.Models;
 
-namespace DG.API.Models;
+namespace DG.API.ViewModels;
 
-public class DrawingBodyModel
+public class ShortDrawingViewModel
 {
     public string Description { get; set; }
     public Dictionary<string, Coords> Points { get; set; }
