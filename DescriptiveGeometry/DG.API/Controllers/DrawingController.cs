@@ -17,93 +17,76 @@ public class DrawingController : Controller
         _drawingService = drawingService;
     }
 
-    [HttpGet("id{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Drawing>> Get(
-    [FromRoute] int id)
+        [FromRoute] int id,
+        CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Get(id)
-            .ConfigureAwait(false);
+            .Get(id);
 
         return result;
     }
 
-    [HttpGet("q-{query}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<Drawing>>> GetByQuery(
-        [FromRoute] string query)
+    [HttpGet("query/{query}")]
+    public async Task<List<Drawing>> FindByDescription(
+        [FromRoute] string query,
+        CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetByQuery(query)
-            .ConfigureAwait(false);
+            .GetByQuery(query);
 
         return result;
     }
 
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<Drawing>>> GetDrawings()
+    public async Task<List<Drawing>> GetDrawings(
+        CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetDrawings()
-            .ConfigureAwait(false);
+            .GetDrawings();
 
         return result;
     }
 
-    [HttpGet("ids/q-{query}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<int>>> GetId(
-        [FromRoute] string query)
+    [HttpGet("ids/query/{query}")]
+    public async Task<List<int>> GetId(
+        [FromRoute] string query,
+        CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .GetId(query)
-            .ConfigureAwait(false);
+            .GetIds(query);
 
         return result;
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<int>> Create(
-      [FromBody] Drawing drawing)
+    public async Task<int> Create(
+      [FromBody] Drawing drawing,
+      CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Create(drawing)
-            .ConfigureAwait(false);
+            .Create(drawing);
 
         return result;
     }
 
     [HttpPut]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<int>> Update(
-      [FromBody] Drawing drawing)
+    public async Task<int> Update(
+      [FromBody] Drawing drawing,
+      CancellationToken cancellationToken = default)
     {
         var result = await _drawingService
-            .Update(drawing)
-            .ConfigureAwait(false);
+            .Update(drawing);
 
         return result;
     }
 
     [HttpDelete]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<int>> Delete(
-        [FromRoute] int id)
+    public async Task Delete(
+        [FromRoute] int id,
+        CancellationToken cancellationToken = default)
     {
-        var result = await _drawingService
-            .Delete(id)
-            .ConfigureAwait(false);
-
-        return result;
+        await _drawingService.Delete(id);
     }
 }

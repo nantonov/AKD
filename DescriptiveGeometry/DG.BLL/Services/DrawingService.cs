@@ -13,42 +13,44 @@ public class DrawingService : IDrawingService
     //    _dbContext = dbContext;
     //}
 
-    public Task<Drawing> Get(int id)
+    public Task<Drawing> Get(int id,
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<List<Drawing>> GetByQuery(string query)
+    public Task<List<Drawing>> GetByQuery(string query,
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<List<Drawing>> GetDrawings()
+    public Task<List<Drawing>> GetDrawings(
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<string> GetName(int id)
+    public Task<List<int>> GetIds(string query,
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<List<int>> GetId(string query)
+    public Task<int> Create(Drawing drawing,
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<int> Create(Drawing drawing)
+    public Task<int> Update(Drawing drawing, 
+        CancellationToken cancellationToken = default)
     {
         return null;
     }
 
-    public Task<int> Update(Drawing drawing)
-    {
-        return null;
-    }
-
-    public Task<int> Delete(int id)
+    public Task<int> Delete(int id,
+        CancellationToken cancellationToken = default)
     {
         return null;
     }

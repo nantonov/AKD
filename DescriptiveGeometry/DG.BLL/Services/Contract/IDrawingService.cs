@@ -4,19 +4,24 @@ namespace DG.BLL.Services.Contract;
 
 public interface IDrawingService
 {
-    Task<Drawing> Get(int id);
+    Task<Drawing> Get(int id,
+        CancellationToken cancellationToken = default);
 
-    Task<List<Drawing>> GetByQuery(string query);
+    Task<List<Drawing>> GetByQuery(string query, 
+        CancellationToken cancellationToken = default);
 
-    Task<List<Drawing>> GetDrawings();
+    Task<List<Drawing>> GetDrawings(
+        CancellationToken cancellationToken = default);
 
-    Task<string> GetName(int id);
+    Task<List<int>> GetIds(string query,
+        CancellationToken cancellationToken = default);
 
-    Task<List<int>> GetId(string query);
+    Task<int> Create(Drawing drawing, 
+        CancellationToken cancellationToken = default);
 
-    Task<int> Create(Drawing drawing);
+    Task<int> Update(Drawing drawing, 
+        CancellationToken cancellationToken = default);
 
-    Task<int> Update(Drawing drawing);
-
-    Task<int> Delete(int id);
+    Task<int> Delete(int id,
+        CancellationToken cancellationToken = default);
 }
