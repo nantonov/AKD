@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DG.DAL;
 
-public static class Registration
+public static class DependencyRegistrar
 {
     public static IServiceCollection AddDrawingsContext(
         this IServiceCollection services,
