@@ -17,8 +17,6 @@ public class DatabaseContext : DbContext
             .HasOne(d => d.Description)
             .WithOne(dd => dd.Drawing)
             .HasForeignKey<DrawingDescriptionRow>(dd => dd.Id);
-        modelBuilder.Entity<DrawingRow>().ToTable("Drawings");
-        modelBuilder.Entity<DrawingDescriptionRow>().ToTable("Drawings");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
