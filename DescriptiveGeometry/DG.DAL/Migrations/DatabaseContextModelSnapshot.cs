@@ -4,18 +4,16 @@ using DG.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace DG.DAL.Migrations
 {
-    [DbContext(typeof(DrawingContext))]
-    [Migration("20221025085934_Init")]
-    partial class Init
+    [DbContext(typeof(DatabaseContext))]
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +22,7 @@ namespace DG.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DG.DAL.Context.Entities.DrawingDescriptionRow", b =>
+            modelBuilder.Entity("DG.DAL.Entities.DrawingDescriptionRow", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -46,7 +44,7 @@ namespace DG.DAL.Migrations
                     b.ToTable("Drawings", (string)null);
                 });
 
-            modelBuilder.Entity("DG.DAL.Context.Entities.DrawingRow", b =>
+            modelBuilder.Entity("DG.DAL.Entities.DrawingRow", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,18 +71,18 @@ namespace DG.DAL.Migrations
                     b.ToTable("Drawings", (string)null);
                 });
 
-            modelBuilder.Entity("DG.DAL.Context.Entities.DrawingDescriptionRow", b =>
+            modelBuilder.Entity("DG.DAL.Entities.DrawingDescriptionRow", b =>
                 {
-                    b.HasOne("DG.DAL.Context.Entities.DrawingRow", "Drawing")
+                    b.HasOne("DG.DAL.Entities.DrawingRow", "Drawing")
                         .WithOne("Description")
-                        .HasForeignKey("DG.DAL.Context.Entities.DrawingDescriptionRow", "Id")
+                        .HasForeignKey("DG.DAL.Entities.DrawingDescriptionRow", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Drawing");
                 });
 
-            modelBuilder.Entity("DG.DAL.Context.Entities.DrawingRow", b =>
+            modelBuilder.Entity("DG.DAL.Entities.DrawingRow", b =>
                 {
                     b.Navigation("Description");
                 });

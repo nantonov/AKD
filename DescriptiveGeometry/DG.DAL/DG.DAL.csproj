@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Context\DrawingContext.cs">
+    <Compile Update="Context\DatabaseContext.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>

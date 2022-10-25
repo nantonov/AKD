@@ -1,4 +1,4 @@
-﻿namespace DG.DAL.Context.Entities;
+﻿namespace DG.DAL.Entities;
 
 public class DrawingRow
 {

@@ -13,7 +13,7 @@ public static class Registration
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var optionsBuilder = new DbContextOptionsBuilder<DrawingContext>();
+        var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
         optionsBuilder.UseSqlServer(
             configuration.GetConnectionString("DescriptiveGeometryDb"));
 

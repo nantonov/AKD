@@ -1,14 +1,14 @@
-﻿using DG.DAL.Context.Entities;
+﻿using DG.DAL.Entities;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace DG.DAL.Context;
 
-public class DrawingContext : DbContext
+public class DatabaseContext : DbContext
 {
-    public DbSet<DrawingRow> Drawings { get; set; } = null!;
-    public DbSet<DrawingDescriptionRow> DrawingDescription { get; set; } = null!;
+    public DbSet<DrawingRow> Drawings { get; set; }
+    public DbSet<DrawingDescriptionRow> DrawingDescription { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
