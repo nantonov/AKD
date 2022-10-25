@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DG.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221025101141_splitTables")]
-    partial class splitTables
+    [Migration("20221025110913_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,6 @@ namespace DG.DAL.Migrations
                     b.Property<string>("DescriptionPhotoLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DrawingId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Points")
                         .IsRequired()
@@ -63,9 +60,8 @@ namespace DG.DAL.Migrations
                     b.Property<DateTimeOffset>("DateUpdated")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("DownLoadCount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DownloadsCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("DrawingPhotoLink")
                         .IsRequired()

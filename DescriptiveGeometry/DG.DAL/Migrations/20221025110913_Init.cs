@@ -1,24 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace DG.DAL.Migrations
 {
-    public partial class splitTables : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DescriptionPhotoLink",
-                table: "Drawings");
-
-            migrationBuilder.DropColumn(
-                name: "Points",
-                table: "Drawings");
-
-            migrationBuilder.DropColumn(
-                name: "Text",
-                table: "Drawings");
+            migrationBuilder.CreateTable(
+                name: "Drawings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DrawingPhotoLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DownloadsCount = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DateUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Drawings", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "DrawingDescription",
@@ -27,8 +32,7 @@ namespace DG.DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Points = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionPhotoLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DrawingId = table.Column<int>(type: "int", nullable: false)
+                    DescriptionPhotoLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,23 +51,8 @@ namespace DG.DAL.Migrations
             migrationBuilder.DropTable(
                 name: "DrawingDescription");
 
-            migrationBuilder.AddColumn<string>(
-                name: "DescriptionPhotoLink",
-                table: "Drawings",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Points",
-                table: "Drawings",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Text",
-                table: "Drawings",
-                type: "nvarchar(max)",
-                nullable: true);
+            migrationBuilder.DropTable(
+                name: "Drawings");
         }
     }
 }

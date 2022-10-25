@@ -31,9 +31,6 @@ namespace DG.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DrawingId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Points")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,7 +58,7 @@ namespace DG.DAL.Migrations
                     b.Property<DateTimeOffset>("DateUpdated")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("DownLoadCount")
+                    b.Property<int>("DownloadsCount")
                         .HasColumnType("int");
 
                     b.Property<string>("DrawingPhotoLink")
