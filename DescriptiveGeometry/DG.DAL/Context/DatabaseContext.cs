@@ -1,7 +1,6 @@
 ﻿using DG.DAL.Entities;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 
 namespace DG.DAL.Context;
