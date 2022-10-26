@@ -16,6 +16,7 @@ public static class DependencyRegistrar
         var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
         optionsBuilder.UseSqlServer(
             configuration.GetConnectionString("DescriptiveGeometryDb"));
+        services.AddDbContext<DatabaseContext>();
 
         return services;
     }

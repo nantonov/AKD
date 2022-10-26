@@ -1,10 +1,23 @@
-﻿using DG.BLL.Interfaces;
+﻿using AutoMapper;
+using DG.BLL.Interfaces;
 using DG.BLL.Models;
+using DG.DAL.Context;
 
 namespace DG.BLL.Services;
 
 public class DrawingService : IDrawingService
 {
+    private readonly DatabaseContext _dbContext;
+    private readonly IMapper _mapper;
+
+    public DrawingService(
+        DatabaseContext dbContext,
+        IMapper mapper)
+    {
+        _dbContext = dbContext;
+        _mapper = mapper;
+    }
+
     public Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();

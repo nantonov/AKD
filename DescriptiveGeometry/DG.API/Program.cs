@@ -1,12 +1,18 @@
 using DG.BLL;
+using DG.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDrawings(builder.Configuration);
+builder.Services.AddDrawings();
+builder.Services.AddDrawingsContext(builder.Configuration);
+builder.Services.AddAutoMapper();
+
 
 var app = builder.Build();
 
