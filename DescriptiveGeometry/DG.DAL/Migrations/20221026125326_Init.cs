@@ -29,21 +29,29 @@ namespace DG.DAL.Migrations
                 name: "DrawingDescription",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Points = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionPhotoLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DescriptionPhotoLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DrawingId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DrawingDescription", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DrawingDescription_Drawings_Id",
-                        column: x => x.Id,
+                        name: "FK_DrawingDescription_Drawings_DrawingId",
+                        column: x => x.DrawingId,
                         principalTable: "Drawings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DrawingDescription_DrawingId",
+                table: "DrawingDescription",
+                column: "DrawingId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

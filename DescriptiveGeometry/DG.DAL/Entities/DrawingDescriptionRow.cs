@@ -6,5 +6,6 @@ public class DrawingDescriptionRow
     public string Text { get; set; }
     public string Points { get; set; }
     public string DescriptionPhotoLink { get; set; }
+    public int DrawingId { get; set; }
     public DrawingRow? Drawing { get; set; }
 }
