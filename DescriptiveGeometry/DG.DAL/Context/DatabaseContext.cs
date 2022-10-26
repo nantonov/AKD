@@ -10,15 +10,6 @@ public class DatabaseContext : DbContext
     public DbSet<DrawingRow> Drawings { get; set; }
     public DbSet<DrawingDescriptionRow> DrawingDescription { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder
-            .Entity<DrawingRow>()
-            .HasOne(d => d.Description)
-            .WithOne(dd => dd.Drawing)
-            .HasForeignKey<DrawingDescriptionRow>(dd => dd.Id);
-    }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var configuration = new ConfigurationBuilder()

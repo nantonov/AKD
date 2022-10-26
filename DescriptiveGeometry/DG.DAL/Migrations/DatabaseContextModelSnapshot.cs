@@ -25,11 +25,17 @@ namespace DG.DAL.Migrations
             modelBuilder.Entity("DG.DAL.Entities.DrawingDescriptionRow", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("DescriptionPhotoLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DrawingId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Points")
                         .IsRequired()
@@ -40,6 +46,9 @@ namespace DG.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DrawingId")
+                        .IsUnique();
 
                     b.ToTable("DrawingDescription");
                 });
@@ -74,7 +83,7 @@ namespace DG.DAL.Migrations
                 {
                     b.HasOne("DG.DAL.Entities.DrawingRow", "Drawing")
                         .WithOne("Description")
-                        .HasForeignKey("DG.DAL.Entities.DrawingDescriptionRow", "Id")
+                        .HasForeignKey("DG.DAL.Entities.DrawingDescriptionRow", "DrawingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
