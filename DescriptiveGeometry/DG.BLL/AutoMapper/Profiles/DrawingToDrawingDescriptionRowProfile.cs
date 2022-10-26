@@ -18,8 +18,8 @@ public class DrawingToDrawingDescriptionRowProfile : Profile
                 opt.MapFrom(d => SerializeToString(d.Points)));
     }
 
-    private static string SerializeToString(Dictionary<string, Coords> coords)
+    private static string SerializeToString(Dictionary<string, Coords> points)
     {
-        return  JsonSerializer.Serialize(coords);
+        return  JsonSerializer.Serialize(points);
     }
 }

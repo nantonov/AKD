@@ -12,6 +12,7 @@ public class MappingProfile
         {
             cfg.AddProfile(new DrawingToDrawingRowProfile());
             cfg.AddProfile(new DrawingToDrawingDescriptionRowProfile());
+            cfg.AddProfile(new DrawingRowToDrawingProfile());
         });
 
         return config;
