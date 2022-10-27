@@ -23,8 +23,6 @@ jobs:
         project_path: DescriptiveGeometry/DescriptiveGeometry.sln
     - name: Restore dependencies
       run: dotnet restore
-      with:
-        project_path: DescriptiveGeometry/DescriptiveGeometry.sln
     - name: Build
       run: dotnet build --no-restore
       with:
