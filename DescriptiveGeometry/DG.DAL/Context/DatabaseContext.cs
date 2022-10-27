@@ -7,8 +7,8 @@ namespace DG.DAL.Context;
 
 public class DatabaseContext : DbContext
 {
-    public DbSet<DrawingRow> Drawings { get; set; }
-    public DbSet<DrawingDescriptionRow> DrawingDescription { get; set; }
+    public DbSet<DrawingEntity> Drawings { get; set; }
+    public DbSet<DrawingDescriptionEntity> DrawingDescriptions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
