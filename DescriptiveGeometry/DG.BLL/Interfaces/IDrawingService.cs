@@ -6,10 +6,7 @@ public interface IDrawingService
 {
     Task<Drawing> Get(int id,
         CancellationToken cancellationToken);
-
-    Task<List<Drawing>> GetByDescription(string description,
-        CancellationToken cancellationToken);
-
+    
     Task<List<Drawing>> GetAll(
         CancellationToken cancellationToken);
 

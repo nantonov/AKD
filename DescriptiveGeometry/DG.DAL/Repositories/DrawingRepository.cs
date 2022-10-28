@@ -2,8 +2,6 @@
 using DG.DAL.Entities;
 using DG.DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
-using System.Threading;
 
 namespace DG.DAL.Repositories;
 
@@ -15,10 +13,12 @@ public class DrawingRepository : IDrawingRepository
     {
         _db = db;
     }
-    public async Task Create(DrawingEntity drawing, CancellationToken cancellationToken)
+    public async Task<DrawingEntity> Create(DrawingEntity drawing, CancellationToken cancellationToken)
     {
-        await _db.Drawings.AddAsync(drawing, cancellationToken);
+        var drawingEntity = await _db.Drawings.AddAsync(drawing, cancellationToken);
         await _db.SaveChangesAsync(cancellationToken);
+
+        return drawingEntity.Entity;
     }
 
     public async Task Delete(DrawingEntity drawing, CancellationToken cancellationToken)
@@ -43,9 +43,11 @@ public class DrawingRepository : IDrawingRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task Update(DrawingEntity drawing, CancellationToken cancellationToken)
+    public async Task<DrawingEntity> Update(DrawingEntity drawing, CancellationToken cancellationToken)
     {
         _db.Entry(drawing).State = EntityState.Modified;
         await _db.SaveChangesAsync(cancellationToken);
+
+        return drawing;
     }
 }
