@@ -1,6 +1,6 @@
 ﻿using DG.BLL.Interfaces;
 using DG.BLL.Services;
-
+using DG.DAL.DI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +13,7 @@ public static class Registration
         IConfiguration configuration)
     {
         services.AddScoped<IDrawingService, DrawingService>();
+        services.AddDataContext(configuration);
 
         return services;
     }
