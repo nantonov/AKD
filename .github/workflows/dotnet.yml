@@ -25,8 +25,7 @@ jobs:
            cd ./DescriptiveGeometry
            dotnet restore
     - name: Build
-      project_path: DescriptiveGeometry/DescriptiveGeometry.sln
-      run: dotnet build --no-restore
+      run: dotnet build DescriptiveGeometry/DescriptiveGeometry.sln --no-restore
     - name: Test
       run: |
            cd ./DescriptiveGeometry
