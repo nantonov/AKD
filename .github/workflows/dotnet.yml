@@ -22,11 +22,10 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
-           cd ./DescriptiveGeometry
-           dotnet restore
+           
+           dotnet restore DescriptiveGeometry/DescriptiveGeometry.sln
     - name: Build
       run: dotnet build DescriptiveGeometry/DescriptiveGeometry.sln --no-restore
     - name: Test
       run: |
-           cd ./DescriptiveGeometry
-           dotnet test --no-build --verbosity normal 
+           dotnet test DescriptiveGeometry/DescriptiveGeometry.sln --no-build --verbosity normal 
