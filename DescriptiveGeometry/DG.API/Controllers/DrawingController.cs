@@ -1,3 +1,4 @@
+using AutoMapper;
 using DG.API.ViewModels;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
@@ -11,71 +12,63 @@ namespace DG.API.Controllers;
 public class DrawingController : Controller
 {
     private readonly IDrawingService _drawingService;
+    private readonly IMapper _mapper;
 
     public DrawingController(
-        IDrawingService drawingService)
+        IDrawingService drawingService,
+        IMapper mapper)
     {
         _drawingService = drawingService;
+        _mapper = mapper;
     }
 
     [HttpGet("{id}")]
-    public async Task<Drawing> Get(
+    public async Task<DrawingViewModel> Get(
         int id,
         CancellationToken cancellationToken)
     {
-        var result = await _drawingService
+        var drawing = await _drawingService
             .Get(id, cancellationToken);
 
-        return result;
-    }
-
-    [HttpGet("description/{description}")]
-    public async Task<List<Drawing>> GetByDescription(
-        string description,
-        CancellationToken cancellationToken)
-    {
-        var result = await _drawingService
-            .GetByDescription(description, cancellationToken);
-
-        return result;
+        return _mapper.Map<DrawingViewModel>(drawing);
     }
 
     [HttpGet]
-    public async Task<List<Drawing>> GetAll(
+    public async Task<IEnumerable<DrawingViewModel>> GetAll(
         CancellationToken cancellationToken)
     {
-        var result = await _drawingService
+        var drawings = await _drawingService
             .GetAll(cancellationToken);
 
-        return result;
+        return _mapper.Map<IEnumerable<DrawingViewModel>>(drawings); ;
     }
 
     [HttpPost]
-    public async Task<Drawing> Create(
-        [FromBody] ShortDrawingViewModel drawingViewModel,
+    public async Task<DrawingViewModel> Create(
+        [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
         CancellationToken cancellationToken)
     {
-        var result = await _drawingService
-            .Create(
-                MapToDrawing(drawingViewModel),
-                cancellationToken);
+        var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
 
-        return result;
+        var drawing = await _drawingService
+            .Create(drawingModel, cancellationToken);
+
+        return _mapper.Map<DrawingViewModel>(drawing);
     }
 
     [HttpPut("{id}")]
-    public async Task<Drawing> Update(
+    public async Task<DrawingViewModel> Update(
         int id,
-        [FromBody] ShortDrawingViewModel drawingViewModel,
+        [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
       CancellationToken cancellationToken)
     {
-        var drawing = MapToDrawing(drawingViewModel);
-        drawing.Id = id;
+        var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
+        drawingModel.Id = id;
 
         var result = await _drawingService
-            .Update(drawing, cancellationToken);
+            .Update(drawingModel, cancellationToken);
 
-        return result;
+        return _mapper.Map<DrawingViewModel>(result);
     }
 
     [HttpDelete("{id}")]
@@ -84,10 +77,5 @@ public class DrawingController : Controller
         CancellationToken cancellationToken)
     {
         return _drawingService.Delete(id, cancellationToken);
-    }
-
-    private static Drawing MapToDrawing(ShortDrawingViewModel drawing)
-    {
-        return new Drawing();
     }
 }
