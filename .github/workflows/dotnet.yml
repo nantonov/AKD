@@ -20,15 +20,15 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-        project_path: DescriptiveGeometry/DescriptiveGeometry.sln
     - name: Restore dependencies
-      run: dotnet restore
-      project_path: DescriptiveGeometry/DescriptiveGeometry.sln
+      run: |
+           cd ./DescriptiveGeometry
+           dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-      with:
-        project_path: DescriptiveGeometry/DescriptiveGeometry.sln
+      run: |
+           cd ./DescriptiveGeometry
+           dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal 
-      with:
-        project_path: DescriptiveGeometry/DescriptiveGeometry.sln
+      run: |
+           cd ./DescriptiveGeometry
+           dotnet test --no-build --verbosity normal 
