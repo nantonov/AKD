@@ -88,12 +88,6 @@ public class DrawingController : Controller
 
     private static Drawing MapToDrawing(ShortDrawingViewModel drawing)
     {
-        return new Drawing()
-        {
-            Description = drawing.Description,
-            Points = drawing.Points,
-            DescriptionPhotoLink = drawing.DescriptionPhotoLink,
-            DrawingPhotoLink = drawing.DrawingPhotoLink
-        };
+        return new Drawing();
     }
 }
