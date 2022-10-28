@@ -4,17 +4,15 @@ using DG.DAL.DI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DG.BLL;
+namespace DG.BLL.DI;
 
-public static class Registration
+public static class BusinessLogicRegister
 {
-    public static IServiceCollection AddDrawings(
+    public static void AddDrawings(
         this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddScoped<IDrawingService, DrawingService>();
         services.AddDataContext(configuration);
-
-        return services;
     }
 }
