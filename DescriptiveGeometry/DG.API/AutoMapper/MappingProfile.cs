@@ -8,7 +8,8 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<Drawing, DrawingViewModel>().ReverseMap();
-        CreateMap<Drawing, ChangeDrawingViewModel>().ReverseMap();
+        CreateMap<DrawingViewModel, Drawing>().ReverseMap();
+        CreateMap<ChangeDrawingViewModel, Drawing>().ReverseMap();
+        CreateMap<DrawingDescriptionViewModel, DrawingDescription>().ReverseMap();
     }
 }
