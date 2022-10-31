@@ -9,5 +9,6 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<DrawingEntity, Drawing>().ReverseMap();
+        CreateMap<DrawingDescriptionEntity, DrawingDescription>().ReverseMap();
     }
 }
