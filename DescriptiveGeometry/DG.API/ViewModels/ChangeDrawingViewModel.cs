@@ -1,6 +1,6 @@
 ﻿namespace DG.API.ViewModels;
 
-public class ShortDrawingViewModel
+public class ChangeDrawingViewModel
 {
     public string Description { get; set; }
     public string Points { get; set; }
