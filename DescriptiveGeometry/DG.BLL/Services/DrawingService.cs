@@ -9,18 +9,26 @@ namespace DG.BLL.Services;
 public class DrawingService : IDrawingService
 {
     private readonly IDrawingRepository _drawingRepository;
+    private readonly IDrawingBlService _drawingBlService;
     private readonly IMapper _mapper;
 
     public DrawingService(
         IDrawingRepository drawingRepository,
+        IDrawingBlService drawingBlService,
         IMapper mapper)
     {
         _drawingRepository = drawingRepository;
+        _drawingBlService = drawingBlService;
         _mapper = mapper;
     }
 
     public async Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
+        if (!await _drawingBlService.Create(drawing, cancellationToken))
+        {
+            throw _drawingBlService.CreateException;
+        }
+
         var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
         var createdDrawing = await _drawingRepository.Create(drawingEntity, cancellationToken);
 
@@ -31,15 +39,22 @@ public class DrawingService : IDrawingService
     {
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
         
-        if (drawing is not null)
+        if (drawing is null)
         {
-            await _drawingRepository.Delete(drawing, cancellationToken);
+            throw _drawingBlService.DeleteException;
         }
+
+        await _drawingRepository.Delete(drawing, cancellationToken);
     }
 
     public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
     {
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
+
+        if (drawing is null)
+        {
+            throw _drawingBlService.GetException;
+        }
 
         return _mapper.Map<Drawing>(drawing);
     }
@@ -53,6 +68,11 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
+        if (!await _drawingBlService.Update(drawing, cancellationToken))
+        {
+            throw _drawingBlService.UpdateException;
+        }
+
         var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
         await _drawingRepository.Update(drawingEntity, cancellationToken);
 

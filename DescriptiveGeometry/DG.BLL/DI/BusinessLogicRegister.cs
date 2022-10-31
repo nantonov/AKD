@@ -13,6 +13,7 @@ public static class BusinessLogicRegister
         IConfiguration configuration)
     {
         services.AddScoped<IDrawingService, DrawingService>();
+        services.AddScoped<IDrawingBlService, DrawingBlService>();
         services.AddDataContext(configuration);
     }
 }
