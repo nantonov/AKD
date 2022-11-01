@@ -39,24 +39,22 @@ public class DrawingService : IDrawingService
     {
         if (!await _drawingBlService.IsPossibleDelete(id, cancellationToken))
         {
-            throw _drawingBlService.UpdateException;
+            throw _drawingBlService.DeleteException;
         }
 
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
         
-        if (drawing is null)
+        if (drawing is not null)
         {
-            throw _drawingBlService.DeleteException;
+            await _drawingRepository.Delete(drawing, cancellationToken);
         }
-
-        await _drawingRepository.Delete(drawing, cancellationToken);
     }
 
     public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
     {
         if (!await _drawingBlService.IsPossibleGet(id, cancellationToken))
         {
-            throw _drawingBlService.UpdateException;
+            throw _drawingBlService.GetException;
         }
 
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
