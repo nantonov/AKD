@@ -18,7 +18,14 @@ public class DrawingBlService : IDrawingBlService
     public Exception UpdateException { get; set; } = new ArgumentException();
     public Exception DeleteException { get; set; } = new ArgumentException("The drawing is not found");
 
-    public async Task<bool> Create(Drawing drawing, CancellationToken cancellationToken)
+    public async Task<bool> IsPossibleGet(int id, CancellationToken cancellationToken)
+    {
+        var drawing = await _drawingRepository.GetById(id, cancellationToken);
+
+        return drawing is not null;
+    }
+
+    public async Task<bool> IsPossibleCreate(Drawing drawing, CancellationToken cancellationToken)
     {
         var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
 
@@ -32,7 +39,7 @@ public class DrawingBlService : IDrawingBlService
             && d.Description.Text == drawing.Description.Text);
     }
     
-    public async Task<bool> Update(Drawing drawing, CancellationToken cancellationToken)
+    public async Task<bool> IsPossibleUpdate(Drawing drawing, CancellationToken cancellationToken)
     {
         if (await _drawingRepository.GetById(drawing.Id, cancellationToken) is null)
         {
@@ -58,5 +65,12 @@ public class DrawingBlService : IDrawingBlService
         }
 
         return result;
+    }
+
+    public async Task<bool> IsPossibleDelete(int id, CancellationToken cancellationToken)
+    {
+        var drawing = await _drawingRepository.GetById(id, cancellationToken);
+
+        return drawing is not null;
     }
 }

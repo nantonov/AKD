@@ -24,7 +24,7 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
-        if (!await _drawingBlService.Create(drawing, cancellationToken))
+        if (!await _drawingBlService.IsPossibleCreate(drawing, cancellationToken))
         {
             throw _drawingBlService.CreateException;
         }
@@ -37,6 +37,11 @@ public class DrawingService : IDrawingService
 
     public async Task Delete(int id, CancellationToken cancellationToken)
     {
+        if (!await _drawingBlService.IsPossibleDelete(id, cancellationToken))
+        {
+            throw _drawingBlService.UpdateException;
+        }
+
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
         
         if (drawing is null)
@@ -49,6 +54,11 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
     {
+        if (!await _drawingBlService.IsPossibleGet(id, cancellationToken))
+        {
+            throw _drawingBlService.UpdateException;
+        }
+
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
 
         if (drawing is null)
@@ -68,7 +78,7 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
-        if (!await _drawingBlService.Update(drawing, cancellationToken))
+        if (!await _drawingBlService.IsPossibleUpdate(drawing, cancellationToken))
         {
             throw _drawingBlService.UpdateException;
         }
