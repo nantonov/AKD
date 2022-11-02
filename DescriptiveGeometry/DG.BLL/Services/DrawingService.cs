@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DG.BLL.Exceptions;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
 using DG.DAL.Entities;
@@ -9,24 +10,30 @@ namespace DG.BLL.Services;
 public class DrawingService : IDrawingService
 {
     private readonly IDrawingRepository _drawingRepository;
-    private readonly IDrawingBlService _drawingBlService;
     private readonly IMapper _mapper;
 
     public DrawingService(
         IDrawingRepository drawingRepository,
-        IDrawingBlService drawingBlService,
         IMapper mapper)
     {
         _drawingRepository = drawingRepository;
-        _drawingBlService = drawingBlService;
         _mapper = mapper;
     }
 
     public async Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
-        if (!await _drawingBlService.IsPossibleCreate(drawing, cancellationToken))
+        var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
+
+        if (drawing.Description is null)
         {
-            throw _drawingBlService.CreateException;
+            throw new ArgumentException("Description is a required field");
+        }
+
+        if (drawingEntities.Any(d =>
+                d.Description != null
+                && d.Description.Text == drawing.Description.Text))
+        {
+            throw new ArgumentException("Description already exists");
         }
 
         var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
@@ -37,32 +44,19 @@ public class DrawingService : IDrawingService
 
     public async Task Delete(int id, CancellationToken cancellationToken)
     {
-        if (!await _drawingBlService.IsPossibleDelete(id, cancellationToken))
-        {
-            throw _drawingBlService.DeleteException;
-        }
-
-        var drawing = await _drawingRepository.GetById(id, cancellationToken);
-        
-        if (drawing is not null)
-        {
-            await _drawingRepository.Delete(drawing, cancellationToken);
-        }
-    }
-
-    public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
-    {
-        if (!await _drawingBlService.IsPossibleGet(id, cancellationToken))
-        {
-            throw _drawingBlService.GetException;
-        }
-
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
 
         if (drawing is null)
         {
-            throw _drawingBlService.GetException;
+            throw new NotFoundException("The drawing is not found");
         }
+
+        await _drawingRepository.Delete(drawing, cancellationToken);
+    }
+
+    public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
+    {
+        var drawing = await _drawingRepository.GetById(id, cancellationToken);
 
         return _mapper.Map<Drawing>(drawing);
     }
@@ -76,9 +70,26 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
-        if (!await _drawingBlService.IsPossibleUpdate(drawing, cancellationToken))
+        if (await _drawingRepository.GetById(drawing.Id, cancellationToken) is null)
         {
-            throw _drawingBlService.UpdateException;
+            throw new NotFoundException("The drawing is not found");
+        }
+
+        if (drawing.Description is null)
+        {
+            throw new ArgumentException("Description is a required field");
+        }
+
+        var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
+
+        var result = !drawingEntities.Any(d =>
+            d.Description != null
+            && d.Description.Text == drawing.Description.Text
+            && d.Id != drawing.Id);
+
+        if (!result)
+        {
+            throw new ArgumentException("Description already exists");
         }
 
         var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
