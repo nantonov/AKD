@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.DAL", "DG.DAL\DG.DAL.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE74A977-A4C7-4167-B564-E58C38F8976B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DG.API.Tests", "Tests\DG.API.Tests\DG.API.Tests.csproj", "{428FA8A7-5BB0-4008-933F-B07EABEBA431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.BLL.Tests", "Tests\DG.API.Tests\DG.BLL.Tests.csproj", "{428FA8A7-5BB0-4008-933F-B07EABEBA431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
