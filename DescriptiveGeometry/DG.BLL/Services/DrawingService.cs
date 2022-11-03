@@ -24,14 +24,8 @@ public class DrawingService : IDrawingService
     {
         var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
 
-        if (drawing.Description is null)
-        {
-            throw new ArgumentException("Description is a required field");
-        }
-
         if (drawingEntities.Any(d =>
-                d.Description != null
-                && d.Description.Text == drawing.Description.Text))
+                d.Description?.Text == drawing.Description?.Text))
         {
             throw new ArgumentException("Description already exists");
         }
@@ -70,30 +64,26 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
-        if (await _drawingRepository.GetById(drawing.Id, cancellationToken) is null)
+        var drawingEntity = await _drawingRepository.GetById(drawing.Id, cancellationToken);
+
+        if (drawingEntity is null)
         {
             throw new NotFoundException("The drawing is not found");
         }
 
-        if (drawing.Description is null)
-        {
-            throw new ArgumentException("Description is a required field");
-        }
-
         var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
 
-        var result = !drawingEntities.Any(d =>
-            d.Description != null
-            && d.Description.Text == drawing.Description.Text
+        var result = drawingEntities.Any(d =>
+            d.Description?.Text == drawing.Description?.Text
             && d.Id != drawing.Id);
 
-        if (!result)
+        if (result)
         {
-            throw new ArgumentException("Description already exists");
+            throw new ArgumentException("The same description already exists");
         }
 
-        var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
-        await _drawingRepository.Update(drawingEntity, cancellationToken);
+        var drawingAfterMap = _mapper.Map<DrawingEntity>(drawing);
+        await _drawingRepository.Update(drawingAfterMap, cancellationToken);
 
         return drawing;
     }
