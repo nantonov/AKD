@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using DG.BLL.Models;
-using Xunit;
-using DG.DAL.Interfaces.Repositories;
-using DG.BLL.Services;
 using Moq;
+using Xunit;
+using DG.BLL.Models;
+using DG.DAL.Interfaces.Repositories;
+using DG.DAL.Entities;
+using DG.BLL.Services;
 using static DG.BLL.Tests.Models.TestDrawingModel;
 using static DG.BLL.Tests.Entities.TestDrawingEntity;
-using DG.DAL.Entities;
 
 namespace DG.BLL.Tests;
 
@@ -24,11 +24,11 @@ public class DrawingServiceTests
     }
 
     [Fact]
-    public async Task DrawingService_Get_ReturnValidModelWithOK()
+    public async Task Get_ValidId_ReturnsDrawingModel()
     {
         _drawingRepository
-                .Setup(dr => dr.GetById(ValidDrawingModel.Id, default).Result)
-                .Returns(ValidDrawingEntity);
+                .Setup(dr => dr.GetById(ValidDrawingModel.Id, default))
+                .ReturnsAsync(ValidDrawingEntity);
         _mapper
             .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
             .Returns(ValidDrawingModel);
@@ -40,11 +40,11 @@ public class DrawingServiceTests
     }
 
     [Fact]
-    public async Task DrawingService_GetAll_ReturnListWithOK()
+    public async Task GetAll_ReturnsDrawingModelList()
     {
         _drawingRepository
-            .Setup(dr =>dr.GetAll(default).Result)
-            .Returns(ValidDrawingEntities);
+            .Setup(dr => dr.GetAll(default))
+            .ReturnsAsync(ValidDrawingEntities);
         _mapper
             .Setup(m =>m.Map<IEnumerable<Drawing>>(ValidDrawingEntities))
             .Returns(ValidDrawingModels);
@@ -55,11 +55,11 @@ public class DrawingServiceTests
     }
 
     [Fact]
-    public async Task DrawingService_Create_ReturnValidModelWithOK()
+    public async Task Create_ValidDrawingModel_ReturnsDrawingModel()
     {
         _drawingRepository
-            .Setup(dr => dr.Create(ValidDrawingEntity, default).Result)
-            .Returns(ValidDrawingEntity);
+            .Setup(dr => dr.Create(ValidDrawingEntity, default))
+            .ReturnsAsync(ValidDrawingEntity);
         _mapper
             .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
             .Returns(ValidDrawingModel);
@@ -74,11 +74,11 @@ public class DrawingServiceTests
     }
 
     [Fact]
-    public async Task DrawingService_Update_ReturnValidModelWithOK()
+    public async Task Update_ValidDrawingModel_ReturnsDrawingModel()
     {
         _drawingRepository
-            .Setup(dr => dr.Update(ValidDrawingEntity, default).Result)
-            .Returns(ValidDrawingEntity);
+            .Setup(dr => dr.Update(ValidDrawingEntity, default))
+            .ReturnsAsync(ValidDrawingEntity);
         _mapper
             .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
             .Returns(ValidDrawingModel);
