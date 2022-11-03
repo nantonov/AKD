@@ -1,17 +1,17 @@
-﻿using DG.DAL.Entities;
+﻿using DG.BLL.Models;
 
 namespace DG.BLL.Tests.Helpers;
 
-public static class DrawingEntityHelper
+public static class DrawingModelHelper
 {
-    public static DrawingEntity Create(int id) => new DrawingEntity()
+    public static Drawing Create(int id) => new Drawing()
     {
         Id = id,
         DrawingPhotoLink = $"DrawingPhotoLink{id}",
         DownloadsCount = id,
         DateCreated = DateTimeOffset.Now,
         DateUpdated = DateTimeOffset.Now,
-        Description = new DrawingDescriptionEntity()
+        Description = new DrawingDescription()
         {
             Id = id,
             Text = $"Text{id}",

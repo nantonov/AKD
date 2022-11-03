@@ -1,82 +1,94 @@
-﻿using System.Configuration;
-using System.Net.Http.Headers;
-using AutoMapper;
-using DG.BLL.Interfaces;
+﻿using AutoMapper;
 using DG.BLL.Models;
 using Xunit;
-using FakeItEasy;
-using FluentAssertions;
 using DG.DAL.Interfaces.Repositories;
 using DG.BLL.Services;
-using DG.DAL.Entities;
 using Moq;
-using DG.BLL.Tests.Helpers;
-using DG.DAL.Repositories;
+using static DG.BLL.Tests.Models.TestDrawingModel;
+using static DG.BLL.Tests.Entities.TestDrawingEntity;
+using DG.DAL.Entities;
 
 namespace DG.BLL.Tests;
 
 public class DrawingServiceTests
 {
     private readonly DrawingService _drawingService;
-    private readonly IDrawingRepository _drawingRepository;
-    private readonly IMapper _mapper;
-
-    //public DrawingServiceTests()
-    //{
-    //    _drawingRepository = new Mock<IDrawingRepository>().Object;
-    //    _mapper = new Mock<IMapper>().Object;
-    //    _drawingService = new DrawingService(_drawingRepository.Object, _mapper);
-    //}
+    private readonly Mock<IDrawingRepository> _drawingRepository;
+    private readonly Mock<IMapper> _mapper;
 
     public DrawingServiceTests()
     {
-        _drawingRepository = A.Fake<IDrawingRepository>();
-        _mapper = A.Fake<IMapper>();
-        _drawingService = new DrawingService(_drawingRepository, _mapper);
+        _drawingRepository = new Mock<IDrawingRepository>();
+        _mapper = new Mock<IMapper>();
+        _drawingService = new DrawingService(_drawingRepository.Object, _mapper.Object);
     }
 
     [Fact]
-    public async Task DrawingService_Get_ReturnNotNullWithOK()
+    public async Task DrawingService_Get_ReturnValidModelWithOK()
     {
-        
+        _drawingRepository
+                .Setup(dr => dr.GetById(ValidDrawingModel.Id, default).Result)
+                .Returns(ValidDrawingEntity);
+        _mapper
+            .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
+            .Returns(ValidDrawingModel);
 
-        
-        var rnd = new Random();
-        var num = rnd.Next();
+        var result = await _drawingService.Get(ValidDrawingModel.Id, default);
 
-        var result = await _drawingService.Get(num, new CancellationToken());
-
-        result.Should().BeNull();
+        Assert.Equal(result.Id, ValidDrawingModel.Id);
+        Assert.Equal(result.DrawingPhotoLink, ValidDrawingModel.DrawingPhotoLink);
     }
 
     [Fact]
-    public async Task DrawingService_GetAll_ReturnNotNullWithOK()
+    public async Task DrawingService_GetAll_ReturnListWithOK()
     {
-        //IEnumerable<DrawingEntity> drawingEntities = new List<DrawingEntity>()
-        //{
-        //    DrawingEntityHelper.Create(1),
-        //    DrawingEntityHelper.Create(2),
-        //    DrawingEntityHelper.Create(3),
-        //    DrawingEntityHelper.Create(4),
-        //    DrawingEntityHelper.Create(5)
-        //};
-
-        //_drawingRepository.Setup(dr => dr.GetAll(default).Result).Returns(drawingEntities);
-
-        IEnumerable<DrawingEntity> drawingEntities = new List<DrawingEntity>()
-        {
-            DrawingEntityHelper.Create(1),
-            DrawingEntityHelper.Create(2),
-            DrawingEntityHelper.Create(3),
-            DrawingEntityHelper.Create(4),
-            DrawingEntityHelper.Create(5)
-        };
-        A.CallTo(() => _drawingRepository.GetAll(default)).Returns(drawingEntities);
-
-        //var drawing = _mapper.Map<Drawing>(DrawingEntityHelper.Create(1));
+        _drawingRepository
+            .Setup(dr =>dr.GetAll(default).Result)
+            .Returns(ValidDrawingEntities);
+        _mapper
+            .Setup(m =>m.Map<IEnumerable<Drawing>>(ValidDrawingEntities))
+            .Returns(ValidDrawingModels);
 
         var result = await _drawingService.GetAll(default);
+        
+        Assert.Equal(result.Count, ValidDrawingEntities.Count());
+    }
 
-        result.Should().NotBeNull();
+    [Fact]
+    public async Task DrawingService_Create_ReturnValidModelWithOK()
+    {
+        _drawingRepository
+            .Setup(dr => dr.Create(ValidDrawingEntity, default).Result)
+            .Returns(ValidDrawingEntity);
+        _mapper
+            .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
+            .Returns(ValidDrawingModel);
+        _mapper
+            .Setup(m => m.Map<DrawingEntity>(ValidDrawingModel))
+            .Returns(ValidDrawingEntity);
+
+        var result = await _drawingService.Create(ValidDrawingModel, default);
+
+        Assert.Equal(result.Id, ValidDrawingModel.Id);
+        Assert.Equal(result.DrawingPhotoLink, ValidDrawingModel.DrawingPhotoLink);
+    }
+
+    [Fact]
+    public async Task DrawingService_Update_ReturnValidModelWithOK()
+    {
+        _drawingRepository
+            .Setup(dr => dr.Update(ValidDrawingEntity, default).Result)
+            .Returns(ValidDrawingEntity);
+        _mapper
+            .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
+            .Returns(ValidDrawingModel);
+        _mapper
+            .Setup(m => m.Map<DrawingEntity>(ValidDrawingModel))
+            .Returns(ValidDrawingEntity);
+
+        var result = await _drawingService.Update(ValidDrawingModel, default);
+
+        Assert.Equal(result.Id, ValidDrawingModel.Id);
+        Assert.Equal(result.DrawingPhotoLink, ValidDrawingModel.DrawingPhotoLink);
     }
 }
