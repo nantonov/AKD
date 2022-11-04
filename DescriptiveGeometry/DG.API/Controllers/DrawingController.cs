@@ -52,7 +52,7 @@ public class DrawingController : Controller
         CancellationToken cancellationToken)
     {
         await _changeDrawingViewModelValidator
-            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken)
+            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken);
 
         var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
 
