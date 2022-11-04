@@ -1,5 +1,4 @@
 using AutoMapper;
-using DG.API.Extensions;
 using DG.API.ViewModels;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
@@ -52,15 +51,8 @@ public class DrawingController : Controller
         [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
         CancellationToken cancellationToken)
     {
-        var validationResult = 
-            await _changeDrawingViewModelValidator
-                .ValidateAsync(changeDrawingViewModel, cancellationToken);
-
-        if (!validationResult.IsValid)
-        {
-            throw new ArgumentException(
-                validationResult.Errors.ValidationFailureListToString());
-        }
+        await _changeDrawingViewModelValidator
+            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken)
 
         var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
 
@@ -76,15 +68,8 @@ public class DrawingController : Controller
         [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
       CancellationToken cancellationToken)
     {
-        var validationResult =
-            await _changeDrawingViewModelValidator
-                .ValidateAsync(changeDrawingViewModel, cancellationToken);
-
-        if (!validationResult.IsValid)
-        {
-            throw new ArgumentException(
-                validationResult.Errors.ValidationFailureListToString());
-        }
+        await _changeDrawingViewModelValidator
+            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken);
 
         var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
         drawingModel.Id = id;
