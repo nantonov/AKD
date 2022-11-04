@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DG.BLL\DG.BLL.csproj" />
+    <InternalsVisibleTo Include="DG.API.Tests" />
   </ItemGroup>
 
 </Project>
