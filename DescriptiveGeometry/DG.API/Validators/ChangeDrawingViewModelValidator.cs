@@ -7,10 +7,10 @@ public class ChangeDrawingViewModelValidator : AbstractValidator<ChangeDrawingVi
 {
     public ChangeDrawingViewModelValidator()
     {
-        RuleFor(d => d.Description).NotNull();
-        RuleFor(d => d.DrawingPhotoLink).NotNull();
-        RuleFor(d => d.Description.Text).MinimumLength(10);
-        RuleFor(d => d.Description.Points).MinimumLength(8);
-        RuleFor(d => d.Description.DescriptionPhotoLink).NotNull();
+        RuleFor(d => d.Description).NotEmpty();
+        RuleFor(d => d.DrawingPhotoLink).NotEmpty();
+        RuleFor(d => d.Description.Text).NotEmpty().MinimumLength(10);
+        RuleFor(d => d.Description.Points).NotEmpty().MinimumLength(8);
+        RuleFor(d => d.Description.DescriptionPhotoLink).NotEmpty();
     }
 }
