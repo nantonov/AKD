@@ -2,7 +2,7 @@ using AutoMapper;
 using DG.API.ViewModels;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
-
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DG.API.Controllers;
@@ -13,13 +13,16 @@ public class DrawingController : Controller
 {
     private readonly IDrawingService _drawingService;
     private readonly IMapper _mapper;
+    private readonly IValidator<ChangeDrawingViewModel> _changeDrawingViewModelValidator;
 
     public DrawingController(
         IDrawingService drawingService,
-        IMapper mapper)
+        IMapper mapper,
+        IValidator<ChangeDrawingViewModel> changeDrawingViewModelValidator)
     {
         _drawingService = drawingService;
         _mapper = mapper;
+        _changeDrawingViewModelValidator = changeDrawingViewModelValidator;
     }
 
     [HttpGet("{id}")]
@@ -48,6 +51,9 @@ public class DrawingController : Controller
         [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
         CancellationToken cancellationToken)
     {
+        await _changeDrawingViewModelValidator
+            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken);
+
         var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
 
         var drawing = await _drawingService
@@ -62,6 +68,9 @@ public class DrawingController : Controller
         [FromBody] ChangeDrawingViewModel changeDrawingViewModel,
       CancellationToken cancellationToken)
     {
+        await _changeDrawingViewModelValidator
+            .ValidateAndThrowAsync(changeDrawingViewModel, cancellationToken);
+
         var drawingModel = _mapper.Map<Drawing>(changeDrawingViewModel);
         drawingModel.Id = id;
 
