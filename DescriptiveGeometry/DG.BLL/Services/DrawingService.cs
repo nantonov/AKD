@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DG.BLL.Exceptions;
 using DG.BLL.Interfaces;
 using DG.BLL.Models;
 using DG.DAL.Entities;
@@ -21,6 +22,14 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Create(Drawing drawing, CancellationToken cancellationToken)
     {
+        var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
+
+        if (drawingEntities.Any(d =>
+                d.Description?.Text == drawing.Description?.Text))
+        {
+            throw new ArgumentException("Description already exists");
+        }
+
         var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
         var createdDrawing = await _drawingRepository.Create(drawingEntity, cancellationToken);
 
@@ -30,11 +39,13 @@ public class DrawingService : IDrawingService
     public async Task Delete(int id, CancellationToken cancellationToken)
     {
         var drawing = await _drawingRepository.GetById(id, cancellationToken);
-        
-        if (drawing is not null)
+
+        if (drawing is null)
         {
-            await _drawingRepository.Delete(drawing, cancellationToken);
+            throw new NotFoundException("The drawing is not found");
         }
+
+        await _drawingRepository.Delete(drawing, cancellationToken);
     }
 
     public async Task<Drawing> Get(int id, CancellationToken cancellationToken)
@@ -53,8 +64,26 @@ public class DrawingService : IDrawingService
 
     public async Task<Drawing> Update(Drawing drawing, CancellationToken cancellationToken)
     {
-        var drawingEntity = _mapper.Map<DrawingEntity>(drawing);
-        await _drawingRepository.Update(drawingEntity, cancellationToken);
+        var drawingEntity = await _drawingRepository.GetById(drawing.Id, cancellationToken);
+
+        if (drawingEntity is null)
+        {
+            throw new NotFoundException("The drawing is not found");
+        }
+
+        var drawingEntities = await _drawingRepository.GetAll(cancellationToken);
+
+        var result = drawingEntities.Any(d =>
+            d.Description?.Text == drawing.Description?.Text
+            && d.Id != drawing.Id);
+
+        if (result)
+        {
+            throw new ArgumentException("The same description already exists");
+        }
+
+        var drawingAfterMap = _mapper.Map<DrawingEntity>(drawing);
+        await _drawingRepository.Update(drawingAfterMap, cancellationToken);
 
         return drawing;
     }
