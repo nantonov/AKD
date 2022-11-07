@@ -79,6 +79,9 @@ public class DrawingServiceTests
         _drawingRepository
             .Setup(dr => dr.Update(ValidDrawingEntity, default))
             .ReturnsAsync(ValidDrawingEntity);
+        _drawingRepository
+            .Setup(dr => dr.GetById(ValidDrawingEntity.Id, default))
+            .ReturnsAsync(ValidDrawingEntity);
         _mapper
             .Setup(m => m.Map<Drawing>(ValidDrawingEntity))
             .Returns(ValidDrawingModel);
