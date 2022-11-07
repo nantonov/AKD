@@ -6,24 +6,24 @@ public static class DrawingModelHelper
 {
     public static ChangeDrawingViewModel CreateChangeDrawingViewModel(int id) => new ChangeDrawingViewModel()
     {
-        DrawingPhotoLink = $"DrawingPhotoLink{id}",
+        DrawingPhotoLink = $"TestDrawingPhotoLink{id}",
         Description = new DrawingDescriptionViewModel()
         {
-            Text = $"Text{id}",
-            Points = $"Points{id}",
-            DescriptionPhotoLink = $"DescriptionPhotoLink{id}"
+            Text = $"TestTextWithMinimumLength=10_{id}",
+            Points = $"TestPointsWithMinimumLength=8_{id}",
+            DescriptionPhotoLink = $"TestDescriptionPhotoLink{id}"
         }
     };
 
     public static DrawingViewModel CreateDrawingViewModel(int id) => new DrawingViewModel()
     {
         Id = id,
-        DrawingPhotoLink = $"DrawingPhotoLink{id}",
+        DrawingPhotoLink = $"TestDrawingPhotoLink{id}",
         Description = new DrawingDescriptionViewModel()
         {
-            Text = $"Text{id}",
-            Points = $"Points{id}",
-            DescriptionPhotoLink = $"DescriptionPhotoLink{id}"
+            Text = $"TestTextWithMinimumLength=10_{id}",
+            Points = $"TestPointsWithMinimumLength=8_{id}",
+            DescriptionPhotoLink = $"TestDescriptionPhotoLink{id}"
         }
     };
 }

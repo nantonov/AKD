@@ -7,16 +7,16 @@ public static class DrawingEntityHelper
     public static DrawingEntity Create(int id) => new DrawingEntity()
     {
         Id = id,
-        DrawingPhotoLink = $"DrawingPhotoLink{id}",
+        DrawingPhotoLink = $"TestDrawingPhotoLink{id}",
         DownloadsCount = id,
         DateCreated = DateTimeOffset.Now,
         DateUpdated = DateTimeOffset.Now,
         Description = new DrawingDescriptionEntity()
         {
             Id = id,
-            Text = $"Text{id}",
-            Points = $"Points{id}",
-            DescriptionPhotoLink = $"DescriptionPhotoLink{id}",
+            Text = $"TestTextWithMinimumLength=10_{id}",
+            Points = $"TestPointsWithMinimumLength=8_{id}",
+            DescriptionPhotoLink = $"TestDescriptionPhotoLink{id}",
             DrawingId = id
         }
     };
