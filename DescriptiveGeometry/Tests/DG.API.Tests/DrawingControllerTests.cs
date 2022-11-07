@@ -8,6 +8,7 @@ using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using static DG.API.Tests.Entities.TestDrawingEntity;
 using static DG.API.Tests.ViewModels.TestDrawingViewModel;
+using static DG.API.Tests.Constants.ApiTestsConstants;
 
 namespace DG.API.Tests;
 
@@ -22,7 +23,7 @@ public class DrawingControllerTests
         foreach (var validDrawingEntity in ValidDrawingEntities )
         {
             var responseDrawingViewModel =
-                await client.GetFromJsonAsync<DrawingViewModel>($"/api/drawing/{validDrawingEntity.Id}");
+                await client.GetFromJsonAsync<DrawingViewModel>($"{DrawingPath}/{validDrawingEntity.Id}");
 
             Assert.Equal(validDrawingEntity.Id, responseDrawingViewModel?.Id);
         }
@@ -34,7 +35,7 @@ public class DrawingControllerTests
         await using var application = new DrawingApi();
         var client = await CreateClient(application);
 
-        var responseDrawingViewModels = await client.GetFromJsonAsync<IEnumerable<DrawingViewModel>>("/api/drawing");
+        var responseDrawingViewModels = await client.GetFromJsonAsync<IEnumerable<DrawingViewModel>>(DrawingPath);
 
         Assert.Equal(ValidDrawingEntities.Count(), responseDrawingViewModels?.Count());
     }
@@ -48,7 +49,7 @@ public class DrawingControllerTests
         var jsonDrawingViewModel = JsonConvert.SerializeObject(ValidCreateDrawingViewModel);
         var contentDrawingViewModel = new StringContent(jsonDrawingViewModel, Encoding.UTF8, "application/json");
 
-        var response = await client.PostAsync("/api/drawing", contentDrawingViewModel);
+        var response = await client.PostAsync(DrawingPath, contentDrawingViewModel);
         var responseDrawingViewModel = await response.Content.ReadAsAsync<DrawingViewModel>();
 
         Assert.Equal( HttpStatusCode.OK, response.StatusCode);
@@ -67,7 +68,7 @@ public class DrawingControllerTests
         var jsonDrawingViewModel = JsonConvert.SerializeObject(updateDrawingViewModel);
         var contentDrawingViewModel = new StringContent(jsonDrawingViewModel, Encoding.UTF8, "application/json");
 
-        var response = await client.PutAsync($"/api/drawing/{ValidDrawingViewModel.Id}", contentDrawingViewModel);
+        var response = await client.PutAsync($"{DrawingPath}/{ValidDrawingViewModel.Id}", contentDrawingViewModel);
         var responseDrawingViewModel = await response.Content.ReadAsAsync<DrawingViewModel>();
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -80,8 +81,8 @@ public class DrawingControllerTests
         await using var application = new DrawingApi();
         var client = await CreateClient(application);
 
-        var responseDelete = await client.DeleteAsync($"/api/drawing/{ValidDrawingViewModel.Id}");
-        var responseDrawingViewModels = await client.GetFromJsonAsync<IEnumerable<DrawingViewModel>>("/api/drawing");
+        var responseDelete = await client.DeleteAsync($"{DrawingPath}/{ValidDrawingViewModel.Id}");
+        var responseDrawingViewModels = await client.GetFromJsonAsync<IEnumerable<DrawingViewModel>>(DrawingPath);
 
         Assert.Equal(HttpStatusCode.OK, responseDelete.StatusCode);
         Assert.Equal(ValidDrawingEntities.Count() - 1, responseDrawingViewModels?.Count());
