@@ -7,6 +7,7 @@ public static class TestDrawingViewModel
 {
     public static ChangeDrawingViewModel ValidChangeDrawingViewModel = DrawingModelHelper.CreateChangeDrawingViewModel(1);
     public static DrawingViewModel ValidDrawingViewModel = DrawingModelHelper.CreateDrawingViewModel(1);
+    public static DrawingViewModel ValidCreateDrawingViewModel = DrawingModelHelper.CreateDrawingViewModel(6);
 
     public static IEnumerable<ChangeDrawingViewModel> ValidChangeDrawingViewModels = new List<ChangeDrawingViewModel>()
     {
