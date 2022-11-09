@@ -4,7 +4,7 @@ namespace DG.DAL.Tests.Helpers;
 
 public static class DrawingEntityHelper
 {
-    public static DrawingEntity Create(int id) => new DrawingEntity()
+    public static DrawingEntity CreateValidEntity(int id) => new DrawingEntity()
     {
         Id = id,
         DrawingPhotoLink = $"TestDrawingPhotoLink{id}",
@@ -14,10 +14,15 @@ public static class DrawingEntityHelper
         Description = new DrawingDescriptionEntity()
         {
             Id = id,
-            Text = $"TestTextWithMinimumLength=10_{id}",
-            Points = $"TestPointsWithMinimumLength=8_{id}",
+            Text = $"TestText{id}",
+            Points = $"TestPoints{id}",
             DescriptionPhotoLink = $"TestDescriptionPhotoLink{id}",
             DrawingId = id
         }
+    };
+
+    public static DrawingEntity CreateInvalidEntity(int id) => new DrawingEntity()
+    {
+        Id = id
     };
 }
