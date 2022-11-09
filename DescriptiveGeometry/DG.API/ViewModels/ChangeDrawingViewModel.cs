@@ -2,6 +2,6 @@
 
 public class ChangeDrawingViewModel
 {
-    public DrawingDescriptionViewModel Description { get; set; }
-    public string DrawingPhotoLink { get; set; }
+    public DrawingDescriptionViewModel Description { get; set; } = null!;
+    public string? DrawingPhotoLink { get; set; }
 }
