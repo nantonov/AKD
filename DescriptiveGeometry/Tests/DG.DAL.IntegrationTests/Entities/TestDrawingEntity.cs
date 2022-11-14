@@ -1,7 +1,7 @@
-﻿using DG.DAL.Tests.Helpers;
+﻿using DG.DAL.IntegrationTests.Helpers;
 using DG.DAL.Entities;
 
-namespace DG.DAL.Tests.Entities;
+namespace DG.DAL.IntegrationTests.Entities;
 
 public static class TestDrawingEntity
 {

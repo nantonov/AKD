@@ -1,6 +1,6 @@
 ﻿using DG.DAL.Entities;
 
-namespace DG.DAL.Tests.Helpers;
+namespace DG.DAL.IntegrationTests.Helpers;
 
 public static class DrawingEntityHelper
 {
