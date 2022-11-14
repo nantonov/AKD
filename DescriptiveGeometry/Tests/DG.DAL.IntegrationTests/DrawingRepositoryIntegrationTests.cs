@@ -29,36 +29,42 @@ public class DrawingRepositoryIntegrationTests : IDisposable
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
-    public async Task GetById_ValidId_ReturnsDrawingEntity(DrawingEntity expectedDrawing)
+    public async Task GetById_ValidId_ReturnsDrawingEntity(DrawingEntity drawing)
     {
-        await AddAsync(_context, expectedDrawing);
+        await AddAsync(_context, drawing);
 
-        var actualDrawing = await _drawingRepository.GetById(expectedDrawing.Id, default);
+        var createdDrawingEntity = await _context.Drawings
+            .FirstOrDefaultAsync(d => d.DrawingPhotoLink == drawing.DrawingPhotoLink);
 
-        actualDrawing.ShouldNotBe(null);
-        actualDrawing?.Id.ShouldBe(expectedDrawing.Id);
+        createdDrawingEntity.ShouldNotBeNull();
+
+        var actualDrawing = await _drawingRepository.GetById(createdDrawingEntity.Id, default);
+
+        actualDrawing.ShouldNotBeNull();
+        actualDrawing.Id.ShouldBe(createdDrawingEntity.Id);
     }
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
-    public async Task GetById_InvalidId_ReturnsNull(DrawingEntity expectedDrawing)
+    public async Task GetById_InvalidId_ReturnsNull(DrawingEntity drawing)
     {
-        await AddAsync(_context, expectedDrawing);
+        await AddAsync(_context, drawing);
 
-        var actualDrawing = await _drawingRepository.GetById(int.MaxValue, default);
+        var actualDrawing = await _drawingRepository.GetById(drawing.Id + 1, default);
         
-        actualDrawing.ShouldBe(null);
+        actualDrawing.ShouldBeNull();
     }
 
     [Fact]
     public async Task GetAll_ReturnsDrawingEntities()
     {
-        await AddAsync(_context, ValidDrawingEntities);
+        await AddAsync(_context, ValidDrawingEntitiesWithId);
+        var drawingsCount = _context.Drawings.Count();
 
         var actualDrawings = await _drawingRepository.GetAll(default);
-        
-        actualDrawings.ShouldNotBe(null);
-        actualDrawings?.Count().ShouldBe(ValidDrawingEntities.Count());
+
+        actualDrawings.ShouldNotBeNull();
+        actualDrawings.Count().ShouldBe(drawingsCount);
     }
 
     [Theory]
@@ -68,36 +74,36 @@ public class DrawingRepositoryIntegrationTests : IDisposable
     {
         var actualDrawing = await _drawingRepository.Create(expectedValidDrawing, default);
 
-        actualDrawing.ShouldNotBe(null);
-        actualDrawing?.Id.ShouldBe(expectedValidDrawing.Id);
-        actualDrawing?.Description.ShouldBe(expectedValidDrawing.Description);
+        actualDrawing.ShouldNotBeNull();
+        actualDrawing.Id.ShouldBe(expectedValidDrawing.Id);
+        actualDrawing.Description.ShouldBe(expectedValidDrawing.Description);
     }
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
     public async Task Update_ValidDrawingEntity_EntityIsUpdated(
-        DrawingEntity expectedValidDrawing)
+        DrawingEntity drawing)
     {
-        await AddAsync(_context, expectedValidDrawing);
+        await AddAsync(_context, drawing);
 
-        var updatedDrawingEntity = expectedValidDrawing;
+        var updatedDrawingEntity = drawing;
         updatedDrawingEntity.DownloadsCount += 1;
         
         var actualDrawing = await _drawingRepository.Update(updatedDrawingEntity, default);
         
-        actualDrawing.ShouldNotBe(null);
-        actualDrawing.DownloadsCount.ShouldBe(expectedValidDrawing.DownloadsCount);
+        actualDrawing.ShouldNotBeNull();
+        actualDrawing.DownloadsCount.ShouldBe(drawing.DownloadsCount);
 
     }
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
     public async Task Update_InvalidDrawingEntity_ThrowsException(
-        DrawingEntity expectedValidDrawing)
+        DrawingEntity drawing)
     {
-        await AddAsync(_context, expectedValidDrawing);
+        await AddAsync(_context, drawing);
 
-        var updatedDrawingEntity = expectedValidDrawing;
+        var updatedDrawingEntity = drawing;
         updatedDrawingEntity.Id += 1;
 
         await Should.ThrowAsync<InvalidOperationException>
@@ -106,24 +112,24 @@ public class DrawingRepositoryIntegrationTests : IDisposable
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
-    public async Task Delete_ValidId_EntityIsDeleted(DrawingEntity expectedValidDrawing)
+    public async Task Delete_ValidId_EntityIsDeleted(DrawingEntity drawing)
     {
-        await AddAsync(_context, expectedValidDrawing);
+        await AddAsync(_context, drawing);
 
         await Should.NotThrowAsync(
-            async () => await _drawingRepository.Delete(expectedValidDrawing, default));
+            async () => await _drawingRepository.Delete(drawing, default));
 
-        var deletedDrawing = await _drawingRepository.GetById(expectedValidDrawing.Id, default);
+        var deletedDrawing = await _context.Drawings.FirstOrDefaultAsync(d => d.Id == drawing.Id);
 
-        deletedDrawing.ShouldBe(null);
+        deletedDrawing.ShouldBeNull();
     }
 
     [Theory]
     [MemberData(nameof(GetValidDrawingEntities), MemberType = typeof(TestDrawingEntity))]
-    public async Task Delete_InvalidId_ThrowsException(DrawingEntity expectedValidDrawing)
+    public async Task Delete_InvalidId_ThrowsException(DrawingEntity drawing)
     {
         await Should.ThrowAsync<DbUpdateConcurrencyException>(
-            async () => await _drawingRepository.Delete(expectedValidDrawing, default));
+            async () => await _drawingRepository.Delete(drawing, default));
     }
 
     private static async Task AddAsync(DatabaseContext context, DrawingEntity drawingEntity)

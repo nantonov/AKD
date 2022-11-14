@@ -5,9 +5,7 @@ namespace DG.DAL.IntegrationTests.Entities;
 
 public static class TestDrawingEntity
 {
-    internal static DrawingEntity ValidDrawingEntity = DrawingEntityHelper.CreateValidEntity(1);
-
-    internal static IEnumerable<DrawingEntity> ValidDrawingEntities = new List<DrawingEntity>()
+    internal static IEnumerable<DrawingEntity> ValidDrawingEntitiesWithId = new List<DrawingEntity>()
     {
         DrawingEntityHelper.CreateValidEntity(1),
         DrawingEntityHelper.CreateValidEntity(2),
@@ -16,28 +14,20 @@ public static class TestDrawingEntity
         DrawingEntityHelper.CreateValidEntity(5)
     };
 
-    internal static IEnumerable<DrawingEntity> InvalidDrawingEntities = new List<DrawingEntity>()
+    internal static IEnumerable<DrawingEntity> ValidCreatedDrawingEntities = new List<DrawingEntity>()
     {
-        DrawingEntityHelper.CreateInvalidEntity(1),
-        DrawingEntityHelper.CreateInvalidEntity(2),
-        DrawingEntityHelper.CreateInvalidEntity(3),
-        DrawingEntityHelper.CreateInvalidEntity(4),
-        DrawingEntityHelper.CreateInvalidEntity(5)
+        DrawingEntityHelper.CreateValidEntityWithoutId(),
+        DrawingEntityHelper.CreateValidEntityWithoutId(),
+        DrawingEntityHelper.CreateValidEntityWithoutId(),
+        DrawingEntityHelper.CreateValidEntityWithoutId(),
+        DrawingEntityHelper.CreateValidEntityWithoutId()
     };
 
     public static IEnumerable<object[]> GetValidDrawingEntities()
     {
-        foreach (var validDrawingEntity in ValidDrawingEntities)
+        foreach (var validCreatedDrawingEntity in ValidCreatedDrawingEntities)
         {
-            yield return new object[] { validDrawingEntity };
-        }
-    }
-
-    internal static IEnumerable<object[]> GetInvalidDrawingEntities()
-    {
-        foreach (var validDrawingEntity in InvalidDrawingEntities)
-        {
-            yield return new object[] { validDrawingEntity };
+            yield return new object[] { validCreatedDrawingEntity };
         }
     }
 }

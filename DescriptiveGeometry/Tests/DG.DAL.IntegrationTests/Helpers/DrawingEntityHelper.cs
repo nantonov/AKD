@@ -21,8 +21,23 @@ public static class DrawingEntityHelper
         }
     };
 
-    public static DrawingEntity CreateInvalidEntity(int id) => new DrawingEntity()
+    public static DrawingEntity CreateValidEntityWithoutId()
     {
-        Id = id
-    };
+        var random = new Random();
+        var number = random.Next();
+
+        return new DrawingEntity()
+        {
+            DrawingPhotoLink = $"TestDrawingPhotoLink{number}",
+            DownloadsCount = number,
+            DateCreated = DateTimeOffset.Now,
+            DateUpdated = DateTimeOffset.Now,
+            Description = new DrawingDescriptionEntity()
+            {
+                Text = $"TestText{number}",
+                Points = $"TestPoints{number}",
+                DescriptionPhotoLink = $"TestDescriptionPhotoLink{number}"
+            }
+        };
+    }
 }
