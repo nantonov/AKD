@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.API.Tests", "Tests\DG.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.DAL.IntegrationTests", "Tests\DG.DAL.IntegrationTests\DG.DAL.IntegrationTests.csproj", "{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{45657611-6F6D-4EBD-801A-0D6960F6EF89}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
