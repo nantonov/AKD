@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.API.Tests", "Tests\DG.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DG.DAL.IntegrationTests", "Tests\DG.DAL.IntegrationTests\DG.DAL.IntegrationTests.csproj", "{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{45657611-6F6D-4EBD-801A-0D6960F6EF89}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "dg.reactapp", "frontend\DG.ReactApp\dg.reactapp.esproj", "{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,12 @@ Global
 		{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +65,7 @@ Global
 		{428FA8A7-5BB0-4008-933F-B07EABEBA431} = {CE74A977-A4C7-4167-B564-E58C38F8976B}
 		{6DE8E9BD-7254-4F79-B422-DE256E87AE9B} = {CE74A977-A4C7-4167-B564-E58C38F8976B}
 		{24ACA13D-FC5D-49C0-AF80-06C8C1A0065F} = {CE74A977-A4C7-4167-B564-E58C38F8976B}
+		{224FDD38-96FF-4C3C-B2CC-853DBF7C13BA} = {45657611-6F6D-4EBD-801A-0D6960F6EF89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85FE5C50-598B-426F-BDCD-68BFB6CC7F9C}
