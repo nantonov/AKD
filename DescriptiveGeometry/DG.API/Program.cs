@@ -12,7 +12,7 @@ builder.Services.AddCors( options =>
         builder
         .AllowAnyMethod()
         .AllowAnyHeader()
-        .WithOrigins("http://localhost:3000", "http://appname.azurestaticapps.net");
+        .WithOrigins("http://localhost:3000");
     });
 });
 
