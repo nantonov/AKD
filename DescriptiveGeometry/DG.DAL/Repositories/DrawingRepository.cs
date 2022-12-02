@@ -46,6 +46,16 @@ public class DrawingRepository : IDrawingRepository
     public async Task<DrawingEntity> Update(DrawingEntity drawing, CancellationToken cancellationToken)
     {
         _db.Entry(drawing).State = EntityState.Modified;
+
+        var drawingDescription = drawing.Description;
+
+        if (drawingDescription is not null)
+        {
+            drawingDescription.DrawingId = drawing.Id;
+            drawingDescription.Id = drawing.Id;
+            _db.Entry(drawingDescription).State = EntityState.Modified;
+        }
+
         await _db.SaveChangesAsync(cancellationToken);
 
         return drawing;
