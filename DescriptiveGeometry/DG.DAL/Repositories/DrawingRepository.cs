@@ -47,13 +47,11 @@ public class DrawingRepository : IDrawingRepository
     {
         _db.Entry(drawing).State = EntityState.Modified;
 
-        var drawingDescription = drawing.Description;
-
-        if (drawingDescription is not null)
+        if (drawing.Description is not null)
         {
-            drawingDescription.DrawingId = drawing.Id;
-            drawingDescription.Id = drawing.Id;
-            _db.Entry(drawingDescription).State = EntityState.Modified;
+            drawing.Description.DrawingId = drawing.Id;
+            drawing.Description.Id = drawing.Id;
+            _db.Entry(drawing.Description).State = EntityState.Modified;
         }
 
         await _db.SaveChangesAsync(cancellationToken);
