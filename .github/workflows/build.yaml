@@ -43,6 +43,6 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-           dotnet build --configuration Debug
+           dotnet build DescriptiveGeometry/DescriptiveGeometry.sln --configuration --configuration Realease 
            dotnet test --no-restore --no-build --configuration Debug --verbosity normal --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
-           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
