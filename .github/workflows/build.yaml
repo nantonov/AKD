@@ -43,7 +43,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-           /Rebuild ..\..\DescriptiveGeometry\DescriptiveGeometry.sln
+           msbuild ..\..\DescriptiveGeometry\DG.API\DG.API.csproj
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
          
