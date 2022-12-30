@@ -1,0 +1,1220 @@
+{
+  "DG.API.dll": {
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\Program.cs": {
+      "Program": {
+        "System.Void Program::<Main>$(System.String[])": {
+          "Lines": {
+            "6": 5,
+            "8": 5,
+            "9": 5,
+            "10": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5,
+            "15": 5,
+            "17": 5,
+            "19": 5,
+            "20": 5,
+            "21": 5,
+            "22": 5,
+            "23": 5,
+            "25": 5,
+            "27": 5,
+            "29": 5,
+            "31": 5
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 138,
+              "EndOffset": 140,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 19,
+              "Offset": 138,
+              "EndOffset": 158,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\ViewModels\\ChangeDrawingViewModel.cs": {
+      "DG.API.ViewModels.ChangeDrawingViewModel": {
+        "DG.API.ViewModels.DrawingDescriptionViewModel DG.API.ViewModels.ChangeDrawingViewModel::get_Description()": {
+          "Lines": {
+            "5": 29
+          },
+          "Branches": []
+        },
+        "System.String DG.API.ViewModels.ChangeDrawingViewModel::get_DrawingPhotoLink()": {
+          "Lines": {
+            "6": 18
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\ViewModels\\DrawingDescriptionViewModel.cs": {
+      "DG.API.ViewModels.DrawingDescriptionViewModel": {
+        "System.String DG.API.ViewModels.DrawingDescriptionViewModel::get_Text()": {
+          "Lines": {
+            "5": 71
+          },
+          "Branches": []
+        },
+        "System.String DG.API.ViewModels.DrawingDescriptionViewModel::get_Points()": {
+          "Lines": {
+            "6": 71
+          },
+          "Branches": []
+        },
+        "System.String DG.API.ViewModels.DrawingDescriptionViewModel::get_DescriptionPhotoLink()": {
+          "Lines": {
+            "7": 71
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\ViewModels\\DrawingViewModel.cs": {
+      "DG.API.ViewModels.DrawingViewModel": {
+        "System.Int32 DG.API.ViewModels.DrawingViewModel::get_Id()": {
+          "Lines": {
+            "5": 63
+          },
+          "Branches": []
+        },
+        "DG.API.ViewModels.DrawingDescriptionViewModel DG.API.ViewModels.DrawingViewModel::get_Description()": {
+          "Lines": {
+            "6": 58
+          },
+          "Branches": []
+        },
+        "System.String DG.API.ViewModels.DrawingViewModel::get_DrawingPhotoLink()": {
+          "Lines": {
+            "7": 59
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\Validators\\ChangeDrawingViewModelValidator.cs": {
+      "DG.API.Validators.ChangeDrawingViewModelValidator": {
+        "System.Void DG.API.Validators.ChangeDrawingViewModelValidator::.ctor()": {
+          "Lines": {
+            "8": 10,
+            "9": 10,
+            "10": 10,
+            "11": 10,
+            "12": 10,
+            "13": 10,
+            "14": 10,
+            "15": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\Controllers\\DrawingController.cs": {
+      "DG.API.Controllers.DrawingController": {
+        "System.Threading.Tasks.Task DG.API.Controllers.DrawingController::Delete(System.Int32,System.Threading.CancellationToken)": {
+          "Lines": {
+            "87": 1,
+            "88": 1,
+            "89": 1
+          },
+          "Branches": []
+        },
+        "System.Void DG.API.Controllers.DrawingController::.ctor(DG.BLL.Interfaces.IDrawingService,AutoMapper.IMapper,FluentValidation.IValidator`1<DG.API.ViewModels.ChangeDrawingViewModel>)": {
+          "Lines": {
+            "18": 10,
+            "19": 10,
+            "20": 10,
+            "21": 10,
+            "22": 10,
+            "23": 10,
+            "24": 10,
+            "25": 10,
+            "26": 10
+          },
+          "Branches": []
+        }
+      },
+      "DG.API.Controllers.DrawingController/<Create>d__6": {
+        "System.Void DG.API.Controllers.DrawingController/<Create>d__6::MoveNext()": {
+          "Lines": {
+            "53": 1,
+            "54": 1,
+            "55": 1,
+            "57": 1,
+            "59": 1,
+            "60": 1,
+            "62": 1,
+            "63": 1
+          },
+          "Branches": []
+        }
+      },
+      "DG.API.Controllers.DrawingController/<Get>d__4": {
+        "System.Void DG.API.Controllers.DrawingController/<Get>d__4::MoveNext()": {
+          "Lines": {
+            "32": 5,
+            "33": 5,
+            "34": 5,
+            "36": 5,
+            "37": 5
+          },
+          "Branches": []
+        }
+      },
+      "DG.API.Controllers.DrawingController/<GetAll>d__5": {
+        "System.Void DG.API.Controllers.DrawingController/<GetAll>d__5::MoveNext()": {
+          "Lines": {
+            "42": 2,
+            "43": 2,
+            "44": 2,
+            "46": 2,
+            "47": 2
+          },
+          "Branches": []
+        }
+      },
+      "DG.API.Controllers.DrawingController/<Update>d__7": {
+        "System.Void DG.API.Controllers.DrawingController/<Update>d__7::MoveNext()": {
+          "Lines": {
+            "70": 1,
+            "71": 1,
+            "72": 1,
+            "74": 1,
+            "75": 1,
+            "77": 1,
+            "78": 1,
+            "80": 1,
+            "81": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.API\\AutoMapper\\MappingProfile.cs": {
+      "DG.API.AutoMapper.MappingProfile": {
+        "System.Void DG.API.AutoMapper.MappingProfile::.ctor()": {
+          "Lines": {
+            "9": 5,
+            "10": 5,
+            "11": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "DG.BLL.dll": {
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\Services\\DrawingService.cs": {
+      "DG.BLL.Services.DrawingService": {
+        "System.Void DG.BLL.Services.DrawingService::.ctor(DG.DAL.Interfaces.Repositories.IDrawingRepository,AutoMapper.IMapper)": {
+          "Lines": {
+            "15": 10,
+            "16": 10,
+            "17": 10,
+            "18": 10,
+            "19": 10,
+            "20": 10,
+            "21": 10
+          },
+          "Branches": []
+        }
+      },
+      "DG.BLL.Services.DrawingService/<>c__DisplayClass3_0": {
+        "System.Boolean DG.BLL.Services.DrawingService/<>c__DisplayClass3_0::<Create>b__0(DG.DAL.Entities.DrawingEntity)": {
+          "Lines": {
+            "28": 6
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            },
+            {
+              "Line": 28,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 30,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            }
+          ]
+        }
+      },
+      "DG.BLL.Services.DrawingService/<>c__DisplayClass7_0": {
+        "System.Boolean DG.BLL.Services.DrawingService/<>c__DisplayClass7_0::<Update>b__0(DG.DAL.Entities.DrawingEntity)": {
+          "Lines": {
+            "77": 6,
+            "78": 6
+          },
+          "Branches": [
+            {
+              "Line": 77,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 77,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            },
+            {
+              "Line": 77,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 77,
+              "Offset": 30,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            },
+            {
+              "Line": 77,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 77,
+              "Offset": 46,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 4
+            }
+          ]
+        }
+      },
+      "DG.BLL.Services.DrawingService/<Create>d__3": {
+        "System.Void DG.BLL.Services.DrawingService/<Create>d__3::MoveNext()": {
+          "Lines": {
+            "24": 1,
+            "25": 1,
+            "27": 1,
+            "29": 0,
+            "30": 0,
+            "33": 1,
+            "34": 1,
+            "36": 1,
+            "37": 1
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 222,
+              "EndOffset": 224,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 222,
+              "EndOffset": 236,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "DG.BLL.Services.DrawingService/<Delete>d__4": {
+        "System.Void DG.BLL.Services.DrawingService/<Delete>d__4::MoveNext()": {
+          "Lines": {
+            "40": 1,
+            "41": 1,
+            "43": 1,
+            "44": 0,
+            "45": 0,
+            "48": 1,
+            "49": 1
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 179,
+              "EndOffset": 181,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 179,
+              "EndOffset": 193,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "DG.BLL.Services.DrawingService/<Get>d__5": {
+        "System.Void DG.BLL.Services.DrawingService/<Get>d__5::MoveNext()": {
+          "Lines": {
+            "52": 5,
+            "53": 5,
+            "55": 5,
+            "56": 5
+          },
+          "Branches": []
+        }
+      },
+      "DG.BLL.Services.DrawingService/<GetAll>d__6": {
+        "System.Void DG.BLL.Services.DrawingService/<GetAll>d__6::MoveNext()": {
+          "Lines": {
+            "59": 2,
+            "60": 2,
+            "62": 2,
+            "63": 2
+          },
+          "Branches": []
+        }
+      },
+      "DG.BLL.Services.DrawingService/<Update>d__7": {
+        "System.Void DG.BLL.Services.DrawingService/<Update>d__7::MoveNext()": {
+          "Lines": {
+            "66": 1,
+            "67": 1,
+            "69": 1,
+            "70": 0,
+            "71": 0,
+            "74": 1,
+            "76": 1,
+            "80": 1,
+            "81": 0,
+            "82": 0,
+            "85": 1,
+            "86": 1,
+            "88": 1,
+            "89": 1
+          },
+          "Branches": [
+            {
+              "Line": 69,
+              "Offset": 236,
+              "EndOffset": 238,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 236,
+              "EndOffset": 250,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 80,
+              "Offset": 433,
+              "EndOffset": 435,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 433,
+              "EndOffset": 447,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\Models\\Drawing.cs": {
+      "DG.BLL.Models.Drawing": {
+        "System.Int32 DG.BLL.Models.Drawing::get_Id()": {
+          "Lines": {
+            "5": 36
+          },
+          "Branches": []
+        },
+        "System.String DG.BLL.Models.Drawing::get_DrawingPhotoLink()": {
+          "Lines": {
+            "6": 35
+          },
+          "Branches": []
+        },
+        "System.Int32 DG.BLL.Models.Drawing::get_DownloadsCount()": {
+          "Lines": {
+            "7": 17
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset DG.BLL.Models.Drawing::get_DateCreated()": {
+          "Lines": {
+            "8": 17
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset DG.BLL.Models.Drawing::get_DateUpdated()": {
+          "Lines": {
+            "9": 17
+          },
+          "Branches": []
+        },
+        "DG.BLL.Models.DrawingDescription DG.BLL.Models.Drawing::get_Description()": {
+          "Lines": {
+            "10": 45
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\Models\\DrawingDescription.cs": {
+      "DG.BLL.Models.DrawingDescription": {
+        "System.Int32 DG.BLL.Models.DrawingDescription::get_Id()": {
+          "Lines": {
+            "5": 17
+          },
+          "Branches": []
+        },
+        "System.String DG.BLL.Models.DrawingDescription::get_Text()": {
+          "Lines": {
+            "6": 45
+          },
+          "Branches": []
+        },
+        "System.String DG.BLL.Models.DrawingDescription::get_Points()": {
+          "Lines": {
+            "7": 35
+          },
+          "Branches": []
+        },
+        "System.String DG.BLL.Models.DrawingDescription::get_DescriptionPhotoLink()": {
+          "Lines": {
+            "8": 35
+          },
+          "Branches": []
+        },
+        "System.Int32 DG.BLL.Models.DrawingDescription::get_DrawingId()": {
+          "Lines": {
+            "9": 17
+          },
+          "Branches": []
+        },
+        "DG.BLL.Models.Drawing DG.BLL.Models.DrawingDescription::get_Drawing()": {
+          "Lines": {
+            "10": 17
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\Exceptions\\NotFoundException.cs": {
+      "DG.BLL.Exceptions.NotFoundException": {
+        "System.Int32 DG.BLL.Exceptions.NotFoundException::get_StatusCode()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Void DG.BLL.Exceptions.NotFoundException::.ctor()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void DG.BLL.Exceptions.NotFoundException::.ctor(System.String)": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void DG.BLL.Exceptions.NotFoundException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\DI\\BusinessLogicRegister.cs": {
+      "DG.BLL.DI.BusinessLogicRegister": {
+        "System.Void DG.BLL.DI.BusinessLogicRegister::AddDrawings(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "14": 5,
+            "15": 5,
+            "16": 5,
+            "17": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.BLL\\AutoMapper\\MappingProfile.cs": {
+      "DG.BLL.AutoMapper.MappingProfile": {
+        "System.Void DG.BLL.AutoMapper.MappingProfile::.ctor()": {
+          "Lines": {
+            "9": 5,
+            "10": 5,
+            "11": 5,
+            "12": 5,
+            "13": 5
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "DG.DAL.dll": {
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Repositories\\DrawingRepository.cs": {
+      "DG.DAL.Repositories.DrawingRepository": {
+        "System.Void DG.DAL.Repositories.DrawingRepository::.ctor(DG.DAL.Context.DatabaseContext)": {
+          "Lines": {
+            "12": 10,
+            "13": 10,
+            "14": 10,
+            "15": 10
+          },
+          "Branches": []
+        }
+      },
+      "DG.DAL.Repositories.DrawingRepository/<Create>d__2": {
+        "System.Void DG.DAL.Repositories.DrawingRepository/<Create>d__2::MoveNext()": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "21": 1,
+            "22": 1
+          },
+          "Branches": []
+        }
+      },
+      "DG.DAL.Repositories.DrawingRepository/<Delete>d__3": {
+        "System.Void DG.DAL.Repositories.DrawingRepository/<Delete>d__3::MoveNext()": {
+          "Lines": {
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1
+          },
+          "Branches": []
+        }
+      },
+      "DG.DAL.Repositories.DrawingRepository/<GetAll>d__5": {
+        "System.Void DG.DAL.Repositories.DrawingRepository/<GetAll>d__5::MoveNext()": {
+          "Lines": {
+            "39": 4,
+            "40": 4,
+            "41": 4,
+            "42": 4,
+            "43": 4,
+            "44": 4
+          },
+          "Branches": []
+        }
+      },
+      "DG.DAL.Repositories.DrawingRepository/<GetById>d__4": {
+        "System.Void DG.DAL.Repositories.DrawingRepository/<GetById>d__4::MoveNext()": {
+          "Lines": {
+            "31": 7,
+            "32": 7,
+            "33": 7,
+            "34": 7,
+            "35": 7,
+            "36": 7
+          },
+          "Branches": []
+        }
+      },
+      "DG.DAL.Repositories.DrawingRepository/<Update>d__6": {
+        "System.Void DG.DAL.Repositories.DrawingRepository/<Update>d__6::MoveNext()": {
+          "Lines": {
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "51": 1,
+            "52": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Migrations\\20221026125326_Init.cs": {
+      "DG.DAL.Migrations.Init": {
+        "System.Void DG.DAL.Migrations.Init::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        },
+        "System.Void DG.DAL.Migrations.Init::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Migrations\\20221026125326_Init.Designer.cs": {
+      "DG.DAL.Migrations.Init": {
+        "System.Void DG.DAL.Migrations.Init::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "100": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Migrations\\20221027102845_RenameTable.cs": {
+      "DG.DAL.Migrations.RenameTable": {
+        "System.Void DG.DAL.Migrations.RenameTable::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void DG.DAL.Migrations.RenameTable::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Migrations\\20221027102845_RenameTable.Designer.cs": {
+      "DG.DAL.Migrations.RenameTable": {
+        "System.Void DG.DAL.Migrations.RenameTable::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "100": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Migrations\\DatabaseContextModelSnapshot.cs": {
+      "DG.DAL.Migrations.DatabaseContextModelSnapshot": {
+        "System.Void DG.DAL.Migrations.DatabaseContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "98": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Entities\\DrawingDescriptionEntity.cs": {
+      "DG.DAL.Entities.DrawingDescriptionEntity": {
+        "System.Int32 DG.DAL.Entities.DrawingDescriptionEntity::get_Id()": {
+          "Lines": {
+            "5": 23
+          },
+          "Branches": []
+        },
+        "System.String DG.DAL.Entities.DrawingDescriptionEntity::get_Text()": {
+          "Lines": {
+            "6": 33
+          },
+          "Branches": []
+        },
+        "System.String DG.DAL.Entities.DrawingDescriptionEntity::get_Points()": {
+          "Lines": {
+            "7": 23
+          },
+          "Branches": []
+        },
+        "System.String DG.DAL.Entities.DrawingDescriptionEntity::get_DescriptionPhotoLink()": {
+          "Lines": {
+            "8": 23
+          },
+          "Branches": []
+        },
+        "System.Int32 DG.DAL.Entities.DrawingDescriptionEntity::get_DrawingId()": {
+          "Lines": {
+            "9": 23
+          },
+          "Branches": []
+        },
+        "DG.DAL.Entities.DrawingEntity DG.DAL.Entities.DrawingDescriptionEntity::get_Drawing()": {
+          "Lines": {
+            "10": 17
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Entities\\DrawingEntity.cs": {
+      "DG.DAL.Entities.DrawingEntity": {
+        "System.Int32 DG.DAL.Entities.DrawingEntity::get_Id()": {
+          "Lines": {
+            "5": 34
+          },
+          "Branches": []
+        },
+        "System.String DG.DAL.Entities.DrawingEntity::get_DrawingPhotoLink()": {
+          "Lines": {
+            "6": 23
+          },
+          "Branches": []
+        },
+        "System.Int32 DG.DAL.Entities.DrawingEntity::get_DownloadsCount()": {
+          "Lines": {
+            "7": 23
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset DG.DAL.Entities.DrawingEntity::get_DateCreated()": {
+          "Lines": {
+            "8": 23
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset DG.DAL.Entities.DrawingEntity::get_DateUpdated()": {
+          "Lines": {
+            "9": 23
+          },
+          "Branches": []
+        },
+        "DG.DAL.Entities.DrawingDescriptionEntity DG.DAL.Entities.DrawingEntity::get_Description()": {
+          "Lines": {
+            "10": 33
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\DI\\DataAccessRegister.cs": {
+      "DG.DAL.DI.DataAccessRegister": {
+        "System.Void DG.DAL.DI.DataAccessRegister::AddDataContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "16": 5,
+            "17": 5,
+            "19": 5,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 5,
+            "24": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Andrey\\source\\repos\\AKD\\DescriptiveGeometry\\DG.DAL\\Context\\DatabaseContext.cs": {
+      "DG.DAL.Context.DatabaseContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<DG.DAL.Entities.DrawingEntity> DG.DAL.Context.DatabaseContext::get_Drawings()": {
+          "Lines": {
+            "9": 48
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<DG.DAL.Entities.DrawingDescriptionEntity> DG.DAL.Context.DatabaseContext::get_DrawingDescriptions()": {
+          "Lines": {
+            "10": 30
+          },
+          "Branches": []
+        },
+        "System.Void DG.DAL.Context.DatabaseContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<DG.DAL.Context.DatabaseContext>)": {
+          "Lines": {
+            "12": 15,
+            "13": 15,
+            "14": 15,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 15
+          },
+          "Branches": [
+            {
+              "Line": 14,
+              "Offset": 36,
+              "EndOffset": 38,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 36,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 15
+            }
+          ]
+        }
+      }
+    }
+  }
+}
