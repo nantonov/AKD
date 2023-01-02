@@ -44,6 +44,6 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
-          dotnet build DescriptiveGeometry\ --no-incremental
-          coverlet DescriptiveGeometry/Tests/DG.DAL.IntegrationTests\bin\Debug\net6.0\DG.DAL.IntegrationTests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml" 
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
+          dotnet build DescriptiveGeometry\ --configuration Debug
+          dotnet test DescriptiveGeometry\ --no-restore --no-build --configuration Debug --verbosity normal --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
