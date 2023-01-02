@@ -42,7 +42,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=DescriptiveGeometry\coverage.xml
+          dotnet tool install --global dotnet-coverage
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
            dotnet build DescriptiveGeometry\
-           dotnet-coverage collect DescriptiveGeometry\ 'dotnet test' -f xml  -o 'coverage.xml'
+           dotnet test DescriptiveGeometry\ --collect:"XPlat Code Coverage"           
+           dotnet test DescriptiveGeometry\ --logger:trx
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
