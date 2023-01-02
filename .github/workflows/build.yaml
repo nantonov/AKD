@@ -43,8 +43,7 @@ jobs:
         shell: powershell
         run: |
           dotnet tool install --global dotnet-coverage
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /s:SonarQube.Analysis.xml
            dotnet build DescriptiveGeometry\ --no-incremental
-           dotnet test DescriptiveGeometry\ --collect:"XPlat Code Coverage"           
-           dotnet test DescriptiveGeometry\ --logger:trx
+           dotnet test DescriptiveGeometry\ --collect:"XPlat Code Coverage" --logger:trx
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
