@@ -45,5 +45,5 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"nantonov_BE" /o:"nantonov" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /s:SonarQube.Analysis.xml
            dotnet build DescriptiveGeometry\
            dotnet test DescriptiveGeometry\ --collect:"XPlat Code Coverage"           
-           dotnet test DescriptiveGeometry\ --settings coverlet.runsettings --logger:trx
+           dotnet test DescriptiveGeometry\ --logger:trx
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
