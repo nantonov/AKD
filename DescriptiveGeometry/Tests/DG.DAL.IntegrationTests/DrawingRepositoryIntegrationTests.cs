@@ -51,14 +51,14 @@ public class DrawingRepositoryIntegrationTests : IDisposable
         await AddAsync(_context, drawing);
 
         var actualDrawing = await _drawingRepository.GetById(drawing.Id + 1, default);
-        
+
         actualDrawing.ShouldBeNull();
     }
 
     [Fact]
     public async Task GetAll_ReturnsDrawingEntities()
     {
-        await AddAsync(_context, ValidDrawingEntitiesWithId);
+        await AddAsync(_context, GetValidDrawingEntitiesWithId());
         var drawingsCount = _context.Drawings.Count();
 
         var actualDrawings = await _drawingRepository.GetAll(default);
@@ -88,12 +88,11 @@ public class DrawingRepositoryIntegrationTests : IDisposable
 
         var updatedDrawingEntity = drawing;
         updatedDrawingEntity.DownloadsCount += 1;
-        
-        var actualDrawing = await _drawingRepository.Update(updatedDrawingEntity, default);
-        
-        actualDrawing.ShouldNotBeNull();
-        actualDrawing.DownloadsCount.ShouldBe(drawing.DownloadsCount);
 
+        var actualDrawing = await _drawingRepository.Update(updatedDrawingEntity, default);
+
+        actualDrawing.ShouldNotBeNull();
+        actualDrawing.DownloadsCount.ShouldBe(updatedDrawingEntity.DownloadsCount);        
     }
 
     [Theory]
